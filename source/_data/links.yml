@@ -1,0 +1,9 @@
+- links_category: Friends
+  has_thumbnail: true
+  list:
+      - name: Feishiko
+        link: https://feishiko.top/
+        description: 我有 8 年的独立游戏开发经验
+        avatar: https://feishiko.top/assets/img/logo.png
+        thumbnail: https://feishiko.top/assets/card-XNCB85eX.png
+ 

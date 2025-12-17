@@ -1,0 +1,38 @@
+{
+  "docs": [
+    {
+      "id": 246323114,
+      "doc_id": "website-for-lightline-igdc",
+      "updated": 1765374353000,
+      "properties": {
+        "title": "社团主页搭建",
+        "urlname": "website-for-lightline-igdc",
+        "date": "2025-11-26 17:54:35",
+        "updated": "2025-12-10 21:45:53",
+        "cover": "https://cdn.nlark.com/yuque/0/2025/png/36226300/1765372155943-4142e5be-4377-4a65-81bc-ca1511522a62.png",
+        "description": "在建完个人博客后发现 Hexo 建站真是太快啦！所以，今天花了点时间给社团主页也搞了一下，记录一下搭建过程，当作 git 操作的练手。环境Node.js: v24.11.1Hexo: v8.1.1hexo-theme-redifine: v2.8.5博客配置Hexo 及主题初始化第一步当然是新..."
+      },
+      "catalog": [],
+      "realName": "社团主页搭建",
+      "relativePath": "\\社团主页搭建.md",
+      "docPath": "./docs/feishu"
+    }
+  ],
+  "catalog": [
+    {
+      "type": "DOC",
+      "title": "社团主页搭建",
+      "uuid": "obItNBGtq9n8Lecx",
+      "url": "website-for-lightline-igdc",
+      "prev_uuid": "",
+      "sibling_uuid": "",
+      "child_uuid": "",
+      "parent_uuid": "",
+      "doc_id": 246323114,
+      "level": 0,
+      "id": 246323114,
+      "open_window": 1,
+      "visible": 1
+    }
+  ]
+}
