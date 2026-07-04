@@ -1,0 +1,214 @@
+# 老鼠洞里有什么
+
+这是一个由 [Hexo](https://hexo.io/) 驱动、使用 [Redefine](https://github.com/EvanNotFound/hexo-theme-redefine) 主题的个人博客项目。站点源文件在本仓库维护，静态产物通过 `hexo-deployer-git` 部署到 GitHub Pages 仓库的 `gh-pages` 分支。
+
+## 项目结构
+
+```text
+.
+├── _config.yml             # Hexo 主配置，包含主题、生成和部署配置
+├── _config.redefine.yml    # Redefine 主题配置
+├── elog.config.js          # Elog 同步配置
+├── source/
+│   ├── _posts/             # Hexo 实际发布的文章
+│   ├── _data/links.yml     # 友链页数据
+│   ├── images/             # 会被发布到 /images/ 的本地图片
+│   ├── links/              # 友链页面
+│   └── tags/               # 标签页面
+├── docs/                   # 同步、整理和备份用文档，不直接等同于发布目录
+├── public/                 # Hexo 生成产物，已被 gitignore
+└── .deploy_git/            # hexo-deployer-git 使用的部署工作目录，已被 gitignore
+```
+
+## 本地开发
+
+安装依赖：
+
+```powershell
+npm install
+```
+
+启动本地预览：
+
+```powershell
+npm run server
+```
+
+生成静态文件：
+
+```powershell
+npm run clean
+npm run build
+```
+
+常用脚本来自 `package.json`：
+
+```json
+{
+  "build": "hexo generate",
+  "clean": "hexo clean",
+  "deploy": "hexo deploy",
+  "server": "hexo server"
+}
+```
+
+## Hexo 与主题配置
+
+主配置在 `_config.yml`：
+
+- `theme: redefine` 启用 Redefine 主题。
+- `all_minifier: true` 启用 `hexo-all-minifier`，用于压缩生成后的静态资源。
+- `deploy` 使用 `hexo-deployer-git`。
+
+主题配置在 `_config.redefine.yml`：
+
+- `info` 维护站点标题、作者和站点 URL。
+- `home_banner` 维护主页 banner、明暗模式图片和首页标题。
+- `page_templates` 维护主题提供的页面模板行为，例如友链页和标签页。
+- `cdn.enable: false`，当前未启用 Redefine 的主题资源 CDN。
+
+本地图片放在 `source/images/`，在文章或主题配置中使用 `/images/<filename>` 引用。修改主题中引用的图片路径时，需要确认对应文件确实存在于 `source/images/`。
+
+## 内容维护
+
+文章发布目录是 `source/_posts/`。新增文章可以使用：
+
+```powershell
+npx hexo new post "文章标题"
+```
+
+友链页由 `source/links/index.md` 和 `source/_data/links.yml` 共同维护。当前数据格式示例：
+
+```yaml
+- links_category: Friends
+  has_thumbnail: true
+  list:
+    - name: Feishiko
+      link: https://feishiko.top/
+      description: 我有 8 年的独立游戏开发经验
+      avatar: https://feishiko.top/assets/img/logo.png
+      thumbnail: https://feishiko.top/assets/card-XNCB85eX.png
+```
+
+内容更新也建议使用规范化提交信息。对于发布新文章、更新页面内容、维护友链等内容类变更，可以使用：
+
+```text
+feat(<scope>): <summary>
+```
+
+例如：
+
+```text
+feat(links): add new friend link
+feat(posts): publish hexo deploy note
+```
+
+## 远程部署
+
+项目使用 [hexo-deployer-git](https://github.com/hexojs/hexo-deployer-git) 的一键部署方式。当前 `_config.yml` 配置为：
+
+```yaml
+deploy:
+  type: git
+  repo: https://github.com/IsaacTheMouse/isaacthemouse.github.io
+  branch: gh-pages
+```
+
+部署流程：
+
+```powershell
+npm run clean
+npm run build
+npm run deploy
+```
+
+`hexo-deployer-git` 会使用 `.deploy_git/` 作为部署工作目录，并将生成后的静态站点推送到配置的远程仓库分支。`public/` 和 `.deploy_git/` 都是生成产物，不应作为源文件提交。
+
+注意：`_config.yml` 中的 `url` 仍是 Hexo 默认示例值时，应在正式部署前改为实际站点地址；当前主题配置 `_config.redefine.yml` 中的站点 URL 是 `https://isaacthemouse.github.io`。
+
+## Elog 语雀同步
+
+本项目使用的是 [LetTTGACO/elog](https://github.com/LetTTGACO/elog)，不是 `yuque-hexo-with-cdn`。
+
+Elog 用于从语雀等在线写作平台同步 Markdown，并可在同步过程中处理图片。当前 `elog.config.js` 的关键配置：
+
+- `write.platform: 'yuque-pwd'`：使用语雀账号密码方式同步。
+- `write['yuque-pwd'].login` 和 `repo`：通过环境变量读取语雀个人路径和知识库路径。
+- `deploy.platform: 'local'`：同步到本地目录。
+- `deploy.local.outputDir: './docs/feishu'`：当前同步输出目录。
+- `deploy.local.frontMatter.enable: true`：输出 Front Matter。
+- `image.enable: true`、`image.platform: 'github'`：启用 GitHub 图床。
+- `image.github.prefixKey: '/images'`：图片路径前缀。
+
+Elog CLI 当前没有写入 `package.json` 依赖，需要在本机安装：
+
+```powershell
+npm install -g @elog/cli
+```
+
+同步前需要准备 `.elog.env`。该文件已被 `.gitignore` 忽略，不要提交。至少会用到这些变量：
+
+```text
+YUQUE_USERNAME=
+YUQUE_PASSWORD=
+YUQUE_LOGIN=
+YUQUE_REPO=
+GITHUB_TOKEN=
+ELOG_GITHUB_USER=
+ELOG_GITHUB_REPO=
+```
+
+执行同步：
+
+```powershell
+elog sync -e .elog.env
+```
+
+如果需要强制同步删除，可使用：
+
+```powershell
+elog sync -e .elog.env --force
+```
+
+当前 Elog 输出目录是 `docs/feishu`，它更像同步和整理目录。Hexo 实际构建只读取 `source/`，因此需要发布的文章应检查整理后放入 `source/_posts/`。
+
+## 图片存储与访问
+
+图片维护优先考虑两件事：降低体积，以及保证访问稳定性。
+
+推荐策略：
+
+- 面向现代浏览器时，优先将大图转为 WebP，降低图片体积。
+- 对需要保留高清原图的内容，可额外提供归档链接，而不是直接塞进文章正文。
+- Hexo 构建阶段启用 `hexo-all-minifier`，减少静态资源体积。
+- 当前图片量不大时，先使用 GitHub 存储，不启用 CDN。
+- 后续图片数量明显增长时，再评估 Cloudflare R2、腾讯云 COS 或其他对象存储。
+- Redefine 支持主题资源 CDN，但当前 `_config.redefine.yml` 中 `cdn.enable` 为 `false`。
+
+可选存储方案对比：
+
+| 存储方式 | 费用 | 备注 |
+| --- | --- | --- |
+| 公共图床 | 通常免费 | 可能有稳定性和长期可用风险 |
+| GitHub | 免费 | 部分网络环境访问可能较差 |
+| Cloudflare R2 | 有免费额度 | 适合后续接入对象存储和自定义域名 |
+| 腾讯云 COS / 阿里云 OSS | 按量计费 | 存储和流量都需要核算 |
+
+上传和整理图片可以使用 [PicList](https://piclist.cn/)。它适合在上传前完成压缩、格式转换、规则化重命名，也支持多配置切换和快捷上传剪贴板文件。
+
+## 安全注意
+
+- `.elog.env` 不能提交。
+- 如果本地凭据曾经出现在对话、日志、截图或提交记录中，应及时轮换。
+- `GITHUB_TOKEN`、语雀账号密码、对象存储密钥都应只放在本地环境变量或 CI Secret 中。
+- 不要把部署 token 直接写入 `_config.yml` 或 `elog.config.js`。
+
+## 参考资料
+
+- [Hexo GitHub Pages 文档](https://hexo.io/zh-cn/docs/github-pages)
+- [Hexo 一键部署](https://hexo.io/zh-cn/docs/one-command-deployment)
+- [hexo-deployer-git](https://github.com/hexojs/hexo-deployer-git)
+- [hexo-theme-redefine](https://github.com/EvanNotFound/hexo-theme-redefine)
+- [Redefine 文档](https://redefine-docs.ohevan.com/)
+- [Elog](https://github.com/LetTTGACO/elog)
+- [Elog 文档](https://elog.1874.cool/)
