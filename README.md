@@ -31,14 +31,19 @@ npm install
 启动本地预览：
 
 ```powershell
-npm run server
+npx hexo server
 ```
 
 生成静态文件：
 
 ```powershell
-npm run clean
-npm run build
+npx hexo generate
+```
+
+清除缓存（`db.json`）和已生成的静态文件（`public/`）：
+
+```powershell
+npx hexo clean
 ```
 
 常用脚本来自 `package.json`：
@@ -90,17 +95,30 @@ npx hexo new post "文章标题"
       thumbnail: https://feishiko.top/assets/card-XNCB85eX.png
 ```
 
-内容更新也建议使用规范化提交信息。对于发布新文章、更新页面内容、维护友链等内容类变更，可以使用：
+内容更新也建议使用规范化提交信息。遵循 [Conventional Commits](https://www.conventionalcommits.org/) 格式：
 
 ```text
-feat(<scope>): <summary>
+<type>(<scope>): <summary>
 ```
+
+常用 type：`feat`（新内容/功能）、`fix`（修复）、`docs`（文档）、`chore`（杂项维护）。
 
 例如：
 
 ```text
 feat(links): add new friend link
 feat(posts): publish hexo deploy note
+docs: update README deployment instructions
+chore: update hexo to latest version
+```
+
+凡是涉及特定页面的内容更新都使用 `feat(<pagename>): <summary>` 的格式，例如：
+
+```text
+✨ feat(bookmarks): 新建5个分类，添加部分网站链接
+- 新建了5个分类：免费资产、游戏引擎、GameJam 官网、竞赛官网、行业资料
+- 为各个分类添加了少量网站
+- 为访问困难的部分网站 icon 上传了本地文件
 ```
 
 ## 远程部署
@@ -117,12 +135,11 @@ deploy:
 部署流程：
 
 ```powershell
-npm run clean
-npm run build
-npm run deploy
+npx hexo clean
+npx hexo deploy
 ```
 
-`hexo-deployer-git` 会使用 `.deploy_git/` 作为部署工作目录，并将生成后的静态站点推送到配置的远程仓库分支。`public/` 和 `.deploy_git/` 都是生成产物，不应作为源文件提交。
+`hexo-deployer-git` 会在部署前自动生成静态文件，因此无需手动执行 `hexo generate`。部署使用 `.deploy_git/` 作为工作目录，并将生成后的静态站点推送到配置的远程仓库分支。`public/` 和 `.deploy_git/` 都是生成产物，不应作为源文件提交。
 
 注意：`_config.yml` 中的 `url` 仍是 Hexo 默认示例值时，应在正式部署前改为实际站点地址；当前主题配置 `_config.redefine.yml` 中的站点 URL 是 `https://isaacthemouse.github.io`。
 
@@ -135,10 +152,11 @@ Elog 用于从语雀等在线写作平台同步 Markdown，并可在同步过程
 - `write.platform: 'yuque-pwd'`：使用语雀账号密码方式同步。
 - `write['yuque-pwd'].login` 和 `repo`：通过环境变量读取语雀个人路径和知识库路径。
 - `deploy.platform: 'local'`：同步到本地目录。
-- `deploy.local.outputDir: './docs/feishu'`：当前同步输出目录。
+- `deploy.local.outputDir: './source/_posts'`：当前同步输出目录，直接输出到 Hexo 文章目录。
 - `deploy.local.frontMatter.enable: true`：输出 Front Matter。
-- `image.enable: true`、`image.platform: 'github'`：启用 GitHub 图床。
-- `image.github.prefixKey: '/images'`：图片路径前缀。
+- `image.enable: true`、`image.platform: 'local'`：启用本地图片存储。
+- `image.local.outputDir: './source/images'`：图片输出到 Hexo 图片目录。
+- `image.local.prefixKey: '/images'`：图片路径前缀。
 
 Elog CLI 当前没有写入 `package.json` 依赖，需要在本机安装：
 
@@ -153,10 +171,9 @@ YUQUE_USERNAME=
 YUQUE_PASSWORD=
 YUQUE_LOGIN=
 YUQUE_REPO=
-GITHUB_TOKEN=
-ELOG_GITHUB_USER=
-ELOG_GITHUB_REPO=
 ```
+
+图片采用本地存储后不再需要 GitHub 相关环境变量。
 
 执行同步：
 
@@ -170,7 +187,7 @@ elog sync -e .elog.env
 elog sync -e .elog.env --force
 ```
 
-当前 Elog 输出目录是 `docs/feishu`，它更像同步和整理目录。Hexo 实际构建只读取 `source/`，因此需要发布的文章应检查整理后放入 `source/_posts/`。
+Elog 同步后文章直接进入 `source/_posts/`，图片进入 `source/images/`，均为 Hexo 构建时直接读取的目录，无需手动整理。
 
 ## 图片存储与访问
 
