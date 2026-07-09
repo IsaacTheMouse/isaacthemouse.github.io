@@ -13,11 +13,11 @@ excerpt: '在建完个人博客后发现 Hexo 建站真是太快啦！所以，�
 ---
 在建完个人博客后发现 Hexo 建站真是太快啦！所以，今天花了点时间给社团主页也搞了一下，记录一下搭建过程，当作 git 操作的练手。
 
-{% notel purple fa-solid fa-tools 环境 %}
+{% callout purple fa-solid fa-tools::环境 %}
 Node.js: v24.11.1  
 Hexo: v8.1.1  
 hexo-theme-redifine: v2.8.5
-{% endnotel %}
+{% endcallout %}
 
 ## 博客配置
 ### Hexo 及主题初始化

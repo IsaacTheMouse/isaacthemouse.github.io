@@ -17,7 +17,7 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 | 项目 | 版本/说明 |
 | --- | --- |
 | Hexo | 8.1.1 |
-| 主题 | hexo-theme-redefine 2.8.5（通过 npm 安装，不在 `themes/` 目录下） |
+| 主题 | hexo-theme-redefine 2.9.0（通过 npm 安装，不在 `themes/` 目录下） |
 | 语言 | zh-CN，文章为中英混合 |
 | 包管理器 | 项目同时存在 `package-lock.json` 和 `yarn.lock`，优先使用 npm |
 | Node.js | 项目未锁定版本，使用当前 LTS |
@@ -62,6 +62,7 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 1. 使用 `npx hexo new post "标题"` 基于 `scaffolds/post.md` 模板创建。
 2. 或通过 `elog sync -e .elog.env` 从语雀同步（见 README「Elog 语雀同步」）。
 3. 本地图片放入 `source/images/`，文章中引用路径为 `/images/<filename>`。
+4. 文章中使用 `{% callout %}` 而非已弃用的 `{% note %}` / `{% notel %}`（详见 [Callout 文档](https://redefine-docs.ohevan.com/zh/docs/modules/callout)）。
 
 ## 质量工具
 

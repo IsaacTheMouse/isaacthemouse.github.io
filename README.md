@@ -65,12 +65,14 @@ npx hexo clean
 - `all_minifier: true` 启用 `hexo-all-minifier`，用于压缩生成后的静态资源。
 - `deploy` 使用 `hexo-deployer-git`。
 
-主题配置在 `_config.redefine.yml`：
+主题配置在 `_config.redefine.yml`（v2.9.0）：
 
 - `info` 维护站点标题、作者和站点 URL。
-- `home_banner` 维护主页 banner、明暗模式图片和首页标题。
+- `home_banner` 维护主页 banner、明暗模式图片和首页标题。社交链接使用数组格式以保证排序稳定。
 - `page_templates` 维护主题提供的页面模板行为，例如友链页和标签页。
 - `cdn.enable: false`，当前未启用 Redefine 的主题资源 CDN。
+- 支持 `{% callout %}` 提示模块（替代已弃用的 `{% note %}` / `{% notel %}`）。
+- 新增评论系统支持：Utterances、Artalk（当前使用 Waline）。
 
 本地图片放在 `source/images/`，在文章或主题配置中使用 `/images/<filename>` 引用。修改主题中引用的图片路径时，需要确认对应文件确实存在于 `source/images/`。
 

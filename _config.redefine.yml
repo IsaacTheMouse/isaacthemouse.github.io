@@ -1,5 +1,5 @@
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
-# THEME REDEFINE CONFIGURATION FILE V2
+# THEME REDEFINE CONFIGURATION FILE V2.9.0
 # BY EVANNOTFOUND
 # GITHUB: https://github.com/EvanNotFound/hexo-theme-redefine
 # DOCUMENTATION: https://redefine-docs.ohevan.com
@@ -176,18 +176,16 @@ home_banner:
     style: default # default, reverse, center
     # Social links
     links:
-      github-alt: https://github.com/IsaacTheMouse  # your GitHub URL
-      bilibili: https://space.bilibili.com/33071241
-      instagram: # your Instagram URL
-      zhihu:  # your ZhiHu URL
-      twitter:  # your twitter URL
-      email: IsaacTheMouse@qq.com  # your email
-      itch-io: https://isaacthemouse.itch.io
-      # ...... # you can add more
+      - icon: github
+        url: https://github.com/IsaacTheMouse
+      - icon: bilibili
+        url: https://space.bilibili.com/33071241
+      - icon: email
+        url: IsaacTheMouse@qq.com
+      - icon: itch-io
+        url: https://isaacthemouse.itch.io
     # Social links with QRcode drawers
-    qrs:
-      weixin:  # your Wechat QRcode image URL
-      # ...... # you can add more
+    qrs: []
 # HOME BANNER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
