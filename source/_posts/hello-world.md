@@ -15,4 +15,7 @@ excerpt: '使用 [Hexo](https://hexo.io/) 重构了个人博客，同时本文�
   - 重构了博客，使用主题 [Redefine v2.8.5](https://github.com/EvanNotFound/hexo-theme-redefine)。
   - 添加了[友情链接](/links/)。
 - 2025/11/24
-  - 添加了[标签](https://redefine-docs.ohevan.com/zh/page_templates/tags)
+  - 添加了[标签](https://redefine-docs.ohevan.com/zh/page_templates/tags)。
+- 2026/07/09
+  - 实现了[基于 Waline 的评论系统](https://redefine-docs.ohevan.com/zh/docs/posts/comment#waline-%E9%85%8D%E7%BD%AE)。
+  - 修改了[图片的嵌入方式](https://hexo.io/zh-cn/docs/asset-folders)，（希望能够）用来绕过429。

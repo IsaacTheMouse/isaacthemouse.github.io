@@ -70,7 +70,7 @@ module.exports = {
   },
   image: {
     enable: true,
-    platform: 'github',
+    platform: 'local',
     local: {
       outputDir: './docs/images',
       prefixKey: '/images',
