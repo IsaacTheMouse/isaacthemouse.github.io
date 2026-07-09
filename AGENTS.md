@@ -31,8 +31,8 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 | `_config.yml` | Hexo 主配置（站点信息、部署目标、生成选项） | README「Hexo 与主题配置」及「远程部署」 |
 | `_config.redefine.yml` | Redefine 主题配置（496 行，包含外观、评论、插件等） | README「Hexo 与主题配置」 |
 | `elog.config.js` | Elog 多平台同步配置（读写来源、输出目录、图片处理） | README「Elog 语雀同步」 |
-| `source/_posts/` | Hexo 文章发布目录 | README「内容维护」 |
-| `source/images/` | 本地图片，构建后映射到 `/images/` | README「图片存储与访问」 |
+| `source/_posts/` | Hexo 文章发布目录，含各文章的资源文件夹 | README「内容维护」 |
+| `source/images/` | 全局图片，构建后映射到 `/images/` | README「图片存储与访问」 |
 | `source/_data/links.yml` | 友链页数据 | README「内容维护」 |
 | `scaffolds/` | `hexo new` 命令使用的文章模板（draft/page/post） | Hexo 文档 |
 | `.elog.env` | Elog 凭据文件，已被 gitignore，禁止提交 | README「安全注意」 |
@@ -61,8 +61,16 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 
 1. 使用 `npx hexo new post "标题"` 基于 `scaffolds/post.md` 模板创建。
 2. 或通过 `elog sync -e .elog.env` 从语雀同步（见 README「Elog 语雀同步」）。
-3. 本地图片放入 `source/images/`，文章中引用路径为 `/images/<filename>`。
-4. 文章中使用 `{% callout %}` 而非已弃用的 `{% note %}` / `{% notel %}`（详见 [Callout 文档](https://redefine-docs.ohevan.com/zh/docs/modules/callout)）。
+3. 文章中使用 `{% callout %}` 而非已弃用的 `{% note %}` / `{% notel %}`（详见 [Callout 文档](https://redefine-docs.ohevan.com/zh/docs/modules/callout)）。
+
+### 图片存储与引用
+
+项目已启用[文章资源文件夹](https://hexo.io/zh-cn/docs/asset-folders)（`post_asset_folder: true`），并配置了 `marked` 的 `prependRoot` 和 `postAsset` 选项，支持在 Markdown 中直接使用相对路径嵌入图片。
+
+- 使用 `hexo new post` 创建文章时，Hexo 会自动在 `source/_posts/` 下创建与文章同名的资源文件夹。
+- 将文章专属图片放入对应的资源文件夹中。
+- 文章内使用 Markdown 语法 `![](image.jpg)` 引用，构建时自动解析为正确的绝对路径。
+- 跨文章共用的图片放入 `source/images/`，引用路径为 `/images/<filename>`。
 
 ## 质量工具
 
@@ -74,7 +82,7 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 
 - `.elog.env`、`db.json`、`public/`、`.deploy_git/`、`.deploy*/` 已被 gitignore，不要提交。
 - `_config.yml` 中的 `url` 是占位值 `http://example.com`，真实站点 URL 在 `_config.redefine.yml` 中配置为 `https://isaacthemouse.github.io`。
-- 图片引用路径格式为 `/images/<filename>`，对应 `source/images/<filename>`。
+- 全局图片引用路径格式为 `/images/<filename>`，对应 `source/images/<filename>`。文章专属图片使用相对路径 `![](filename.ext)`，存放于文章同名的资源文件夹中。
 - 不要修改 `public/` 或 `.deploy_git/` 中的文件——它们会在下次构建时被覆盖。
 - 凭据（GitHub Token、语雀密码等）只应存在于 `.elog.env` 或环境变量中，绝对不能写入配置文件或提交到仓库。
 

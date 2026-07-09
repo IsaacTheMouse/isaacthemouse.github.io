@@ -86,9 +86,9 @@ home_banner:
 
 为主页添加了背景图片，通过调整 logo 在实际图片中的位置，配合 static 类型的主页图片样式，可以实现如图的主页效果。分别制作了两张不同风格的背景图片以适应黑夜模式 / 明亮模式。
 
-![黑夜模式的主页效果图](https://raw.githubusercontent.com/IsaacTheMouse/isaacthemouse.github.io/master/images/42eb9bbcc5e1116bca51f40630c059d1.webp)
+![黑夜模式的主页效果图](42eb9bbcc5e1116bca51f40630c059d1.webp)
 
-![明亮模式下的主页效果图](https://raw.githubusercontent.com/IsaacTheMouse/isaacthemouse.github.io/master/images/768677ce7f8507449b25c388b08008fc.webp)
+![明亮模式下的主页效果图](768677ce7f8507449b25c388b08008fc.webp)
 
 ### 常用链接页
 按 [Redefine 文档](https://redefine-docs.ohevan.com/zh/page_templates/bookmarks)描述，首先创建一个新页面，在这里我并没有更改页面的名字（对应 url 中的路径）。
@@ -137,7 +137,7 @@ template: bookmarks
       image: /images/gcj-icon.png
 ```
 
-![实现效果](https://raw.githubusercontent.com/IsaacTheMouse/isaacthemouse.github.io/master/images/93e1c418715bbb6e22279e219bc73f7b.webp)
+![实现效果](93e1c418715bbb6e22279e219bc73f7b.webp)
 
 ### 相册
 在这个部分首先需要考虑两个问题：大量图片的访问是否会带来过高的开销？图片的访问性如何保证？
@@ -188,7 +188,7 @@ template: bookmarks
 
 询问了 ChatGPT，给我的回复是常用约定为内容更新如发布新文章等会使用 feat，考虑到 commit message 结构中有 Scope 这一项，决定在之后涉及特定页面的内容更新都使用 `feat(<scope>): <summary>` 的格式。
 
-![符合该格式的一次提交](https://raw.githubusercontent.com/IsaacTheMouse/isaacthemouse.github.io/master/images/398396c0b65e884b3cd155f7def5e111.webp)
+![符合该格式的一次提交](398396c0b65e884b3cd155f7def5e111.webp)
 
 ### GitHub Pages 部署
 根据之前搭建个人博客的操作，在组织下新建了 [repository](https://github.com/LightLine-IGDC/lightline-igdc.github.io)，命名为 lightline-igdc.github.io。
