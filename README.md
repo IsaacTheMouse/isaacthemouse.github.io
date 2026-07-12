@@ -159,7 +159,7 @@ Elog 用于从语雀等在线写作平台同步 Markdown，并可在同步过程
 - `image.enable: true`、`image.platform: 'local'`：启用本地图片存储。
 - `image.local.outputDir: './docs/feishu'`：图片输出目录，与文档同目录。
 - `image.local.prefixKey: '/images'`：图片路径前缀（启用 `imagePathExt` 后由拓展点接管）。
-- `image.local.imagePathExt: './elog.image-path-ext.js'`：自定义图片路径拓展点，按文档标题为文件夹存放图片，最终路径为 `./docs/feishu/<标题>/image.png`。
+- `image.local.imagePathExt: './elog.image-path-ext.js'`：自定义图片路径拓展点，按文档标题为文件夹存放图片，Markdown 中图片引用为纯文件名格式（兼容 Hexo 文章资源文件夹），实际路径为 `./docs/feishu/<标题>/image.png`。
 
 Elog CLI 当前没有写入 `package.json` 依赖，需要在本机安装：
 
@@ -190,7 +190,7 @@ elog sync -e .elog.env
 elog sync -e .elog.env --force
 ```
 
-Elog 同步后文章和图片均进入 `./docs/feishu/`，图片按文档标题分文件夹存放（`./docs/feishu/<标题>/image.png`），无需手动整理。
+Elog 同步后文章和图片均进入 `./docs/feishu/`，图片按文档标题分文件夹存放（`./docs/feishu/<标题>/image.png`），Markdown 中以纯文件名 `![](image.png)` 引用，与 Hexo 文章资源文件夹行为一致，无需手动整理。
 
 ## 图片存储与访问
 
