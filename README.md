@@ -154,11 +154,12 @@ Elog 用于从语雀等在线写作平台同步 Markdown，并可在同步过程
 - `write.platform: 'yuque-pwd'`：使用语雀账号密码方式同步。
 - `write['yuque-pwd'].login` 和 `repo`：通过环境变量读取语雀个人路径和知识库路径。
 - `deploy.platform: 'local'`：同步到本地目录。
-- `deploy.local.outputDir: './source/_posts'`：当前同步输出目录，直接输出到 Hexo 文章目录。
+- `deploy.local.outputDir: './docs/feishu'`：同步输出目录，文章以文档标题命名。
 - `deploy.local.frontMatter.enable: true`：输出 Front Matter。
 - `image.enable: true`、`image.platform: 'local'`：启用本地图片存储。
-- `image.local.outputDir: './source/images'`：图片输出到 Hexo 图片目录。
-- `image.local.prefixKey: '/images'`：图片路径前缀。
+- `image.local.outputDir: './docs/feishu'`：图片输出目录，与文档同目录。
+- `image.local.prefixKey: '/images'`：图片路径前缀（启用 `imagePathExt` 后由拓展点接管）。
+- `image.local.imagePathExt: './elog.image-path-ext.js'`：自定义图片路径拓展点，按文档标题为文件夹存放图片，最终路径为 `./docs/feishu/<标题>/image.png`。
 
 Elog CLI 当前没有写入 `package.json` 依赖，需要在本机安装：
 
@@ -189,7 +190,7 @@ elog sync -e .elog.env
 elog sync -e .elog.env --force
 ```
 
-Elog 同步后文章直接进入 `source/_posts/`，图片进入 `source/images/`，均为 Hexo 构建时直接读取的目录，无需手动整理。
+Elog 同步后文章和图片均进入 `./docs/feishu/`，图片按文档标题分文件夹存放（`./docs/feishu/<标题>/image.png`），无需手动整理。
 
 ## 图片存储与访问
 
@@ -214,6 +215,12 @@ Elog 同步后文章直接进入 `source/_posts/`，图片进入 `source/images/
 | 腾讯云 COS / 阿里云 OSS | 按量计费 | 存储和流量都需要核算 |
 
 上传和整理图片可以使用 [PicList](https://piclist.cn/)。它适合在上传前完成压缩、格式转换、规则化重命名，也支持多配置切换和快捷上传剪贴板文件。
+
+## 写作指导
+
+请不要在 Markdown 文章开头加上 # 标题
+
+请仅在 Markdown 文件的 `front-matter` 中的 `title:` 属性中写上你的标题，否则会出现复数标题。
 
 ## 安全注意
 

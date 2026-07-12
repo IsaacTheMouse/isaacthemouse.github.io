@@ -31,6 +31,7 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 | `_config.yml` | Hexo 主配置（站点信息、部署目标、生成选项） | README「Hexo 与主题配置」及「远程部署」 |
 | `_config.redefine.yml` | Redefine 主题配置（496 行，包含外观、评论、插件等） | README「Hexo 与主题配置」 |
 | `elog.config.js` | Elog 多平台同步配置（读写来源、输出目录、图片处理） | README「Elog 语雀同步」 |
+| `elog.image-path-ext.js` | Elog 图片路径拓展点，按文档标题分文件夹存放图片 | README「Elog 语雀同步」 |
 | `source/_posts/` | Hexo 文章发布目录，含各文章的资源文件夹 | README「内容维护」 |
 | `source/images/` | 全局图片，构建后映射到 `/images/` | README「图片存储与访问」 |
 | `source/_data/links.yml` | 友链页数据 | README「内容维护」 |

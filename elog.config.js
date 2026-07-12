@@ -72,9 +72,10 @@ module.exports = {
     enable: true,
     platform: 'local',
     local: {
-      outputDir: './docs/images',
+      outputDir: './docs/feishu',
       prefixKey: '/images',
       pathFollowDoc: false,
+      imagePathExt: './elog.image-path-ext.js',
     },
     oss: {
       secretId: process.env.OSS_SECRET_ID,
