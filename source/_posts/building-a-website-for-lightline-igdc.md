@@ -8,7 +8,7 @@ categories:
   - 运维
 tags: 
   - "Blog"
-cover: 'https://raw.githubusercontent.com/IsaacTheMouse/isaacthemouse.github.io/master/images/42eb9bbcc5e1116bca51f40630c059d1.webp'
+cover: '42eb9bbcc5e1116bca51f40630c059d1.webp'
 excerpt: '在建完个人博客后发现 Hexo 建站真是太快啦！所以，今天花了点时间给社团主页也搞了一下，记录一下搭建过程，当作 git 操作的练手。'
 ---
 在建完个人博客后发现 Hexo 建站真是太快啦！所以，今天花了点时间给社团主页也搞了一下，记录一下搭建过程，当作 git 操作的练手。

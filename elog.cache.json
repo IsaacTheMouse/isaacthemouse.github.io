@@ -3,12 +3,12 @@
     {
       "id": 246323114,
       "doc_id": "website-for-lightline-igdc",
-      "updated": 1765374353000,
+      "updated": 1783834584000,
       "properties": {
         "title": "社团主页搭建",
         "urlname": "website-for-lightline-igdc",
         "date": "2025-11-26 17:54:35",
-        "updated": "2025-12-10 21:45:53",
+        "updated": "2026-07-12 13:36:24",
         "cover": "https://cdn.nlark.com/yuque/0/2025/png/36226300/1765372155943-4142e5be-4377-4a65-81bc-ca1511522a62.png",
         "description": "在建完个人博客后发现 Hexo 建站真是太快啦！所以，今天花了点时间给社团主页也搞了一下，记录一下搭建过程，当作 git 操作的练手。环境Node.js: v24.11.1Hexo: v8.1.1hexo-theme-redifine: v2.8.5博客配置Hexo 及主题初始化第一步当然是新..."
       },
@@ -16,15 +16,94 @@
       "realName": "社团主页搭建",
       "relativePath": "\\社团主页搭建.md",
       "docPath": "./docs/feishu"
+    },
+    {
+      "id": 276026439,
+      "doc_id": "guxu0e2e8xqhgxy8",
+      "updated": 1782932726000,
+      "properties": {
+        "title": "老鼠的游戏评鉴",
+        "urlname": "guxu0e2e8xqhgxy8",
+        "date": "2026-07-02 02:23:03",
+        "updated": "2026-07-02 03:05:26",
+        "cover": "https://cdn.nlark.com/yuque/0/2026/png/36226300/1782930184738-ff33a1c7-52b7-41d5-b002-97ec0966732d.png",
+        "description": "写在前面这并不是一篇游戏推荐，而是一篇评论总集。在这篇文章里，我会按对我的影响程度来举例一些我觉得值得了解的游戏。因为是按照我的看法来排序，所以会非常主观，不过也能勉强当作一个游戏推荐来看。我并不保证文章里提及的游戏适合所有人，所以如果你对其中某个游戏感兴趣了，记得提前查一查有关信息或者直接来..."
+      },
+      "catalog": [],
+      "realName": "老鼠的游戏评鉴",
+      "relativePath": "\\老鼠的游戏评鉴.md",
+      "docPath": "./docs/feishu"
+    },
+    {
+      "id": 277309688,
+      "doc_id": "fc6zmqoqtcu8t63c",
+      "updated": 1783833009000,
+      "properties": {
+        "title": "2024 吉比特高校 GameJam 复盘",
+        "urlname": "fc6zmqoqtcu8t63c",
+        "date": "2026-07-12 13:10:08",
+        "updated": "2026-07-12 13:10:09",
+        "cover": "https://cdn.nlark.com/yuque/0/2025/png/36226300/1760353853086-b66304b9-488f-498f-ac70-325d8e7d849a.png",
+        "description": "本文写于 2024 年 12 月 GameJam 结束后，迁移至博客时小有改动机制介绍核心机制在 2024 吉比特高校 GameJam 中，我根据主题【睡梦】联想到电影《盗梦空间》，并由此设计了一个关于“多层梦境”和“死亡”的逻辑解谜玩法。在《盗梦空间》中，人们可以在设备辅助下潜入梦境，并且梦..."
+      },
+      "catalog": [],
+      "realName": "2024 吉比特高校 GameJam 复盘",
+      "relativePath": "\\2024 吉比特高校 GameJam 复盘.md",
+      "docPath": "./docs/feishu"
     }
   ],
   "catalog": [
     {
       "type": "DOC",
+      "title": "2024 吉比特高校 GameJam 复盘",
+      "uuid": "C4_7-VZEWcWF3RiB",
+      "url": "fc6zmqoqtcu8t63c",
+      "prev_uuid": "",
+      "sibling_uuid": "TlXqUAolw_LaigMn",
+      "child_uuid": "",
+      "parent_uuid": "",
+      "doc_id": 277309688,
+      "level": 0,
+      "id": 277309688,
+      "open_window": 1,
+      "visible": 1
+    },
+    {
+      "type": "DOC",
+      "title": "老鼠的游戏评鉴",
+      "uuid": "TlXqUAolw_LaigMn",
+      "url": "guxu0e2e8xqhgxy8",
+      "prev_uuid": "C4_7-VZEWcWF3RiB",
+      "sibling_uuid": "OjUGmgIH3M4Cl9ON",
+      "child_uuid": "",
+      "parent_uuid": "",
+      "doc_id": 276026439,
+      "level": 0,
+      "id": 276026439,
+      "open_window": 1,
+      "visible": 1
+    },
+    {
+      "type": "DOC",
+      "title": "老鼠的美食地图",
+      "uuid": "OjUGmgIH3M4Cl9ON",
+      "url": "ax815l7wggge6pvb",
+      "prev_uuid": "TlXqUAolw_LaigMn",
+      "sibling_uuid": "obItNBGtq9n8Lecx",
+      "child_uuid": "",
+      "parent_uuid": "",
+      "doc_id": 261914576,
+      "level": 0,
+      "id": 261914576,
+      "open_window": 1,
+      "visible": 0
+    },
+    {
+      "type": "DOC",
       "title": "社团主页搭建",
       "uuid": "obItNBGtq9n8Lecx",
       "url": "website-for-lightline-igdc",
-      "prev_uuid": "",
+      "prev_uuid": "OjUGmgIH3M4Cl9ON",
       "sibling_uuid": "",
       "child_uuid": "",
       "parent_uuid": "",
