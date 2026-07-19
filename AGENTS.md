@@ -35,6 +35,7 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 | `source/_posts/` | Hexo 文章发布目录，含各文章的资源文件夹 | README「内容维护」 |
 | `source/images/` | 全局图片，构建后映射到 `/images/` | README「图片存储与访问」 |
 | `source/_data/links.yml` | 友链页数据 | README「内容维护」 |
+| `scripts/columns.js` | 站点级自定义标签 `{% columns %}`，分栏布局（参数 `ratio`/`cols`/`gap`/`fill`，`<!-- column -->` 分隔，各栏顶对齐，移动端自动堆叠） | README「写作指导」 |
 | `scaffolds/` | `hexo new` 命令使用的文章模板（draft/page/post） | Hexo 文档 |
 | `.elog.env` | Elog 凭据文件，已被 gitignore，禁止提交 | README「安全注意」 |
 
@@ -45,9 +46,9 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 - 修改 YAML 配置时保持与现有格式一致。
 - 修改 `_config.redefine.yml` 时注意该文件较长，使用精确匹配进行编辑。
 
-### 文档同步
+## 文档同步
 
-进行任何特性更新时，必须先判断该修改是否需要同步到 `README.md` 和 `AGENTS.md`，若需要则必须将变更内容同步进去。
+进行任何特性更新的 commit 前，必须先判断该修改是否需要同步到 `README.md` 和 `AGENTS.md`，若需要则必须将变更内容同步进去。
 
 **判断标准如下：**
 
@@ -62,6 +63,8 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 简言之：**影响未来 blog 维护流程的变更需同步；仅影响站点的内容展示的变更无需同步。**
 
 ## 提交规范
+
+提交前，检查是否已经进行了上一节提到的文档同步。
 
 本项目遵循 [Conventional Commits](https://www.conventionalcommits.org/)。使用中文编写提交消息。
 
@@ -78,7 +81,8 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 
 1. 使用 `npx hexo new post "标题"` 基于 `scaffolds/post.md` 模板创建。
 2. 或通过 `elog sync -e .elog.env` 从语雀同步（见 README「Elog 语雀同步」）。
-3. 文章中使用 `{% callout %}` 而非已弃用的 `{% note %}` / `{% notel %}`（详见 [Callout 文档](https://redefine-docs.ohevan.com/zh/docs/modules/callout)）。
+3. **语雀同步后处理：** 使用 `hexo-post-polish` skill 规范化 front-matter 并将图片转换为 webp（含动图）。Skill 详情见 `.opencode/skills/hexo-post-polish/SKILL.md`。
+4. 文章中使用 `{% callout %}` 而非已弃用的 `{% note %}` / `{% notel %}`（详见 [Callout 文档](https://redefine-docs.ohevan.com/zh/docs/modules/callout)）。
 
 ### 图片存储与引用
 

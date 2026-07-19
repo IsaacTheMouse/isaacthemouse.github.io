@@ -9,6 +9,8 @@
 ├── _config.yml             # Hexo 主配置，包含主题、生成和部署配置
 ├── _config.redefine.yml    # Redefine 主题配置
 ├── elog.config.js          # Elog 同步配置
+├── scripts/                # 站点级 Hexo 脚本（自定义标签插件等）
+│   └── columns.js          # 自定义 {% columns %} 分栏标签
 ├── source/
 │   ├── _posts/             # Hexo 实际发布的文章
 │   ├── _data/links.yml     # 友链页数据
@@ -221,6 +223,36 @@ Elog 同步后文章和图片均进入 `./docs/feishu/`，图片按文档标题�
 请不要在 Markdown 文章开头加上 # 标题
 
 请仅在 Markdown 文件的 `front-matter` 中的 `title:` 属性中写上你的标题，否则会出现复数标题。
+
+### 自定义分栏标签 columns
+
+`scripts/columns.js` 注册了站点级自定义标签 `{% columns %}`，用于在文章中实现多栏并排布局（如图文左右分栏）：
+
+```markdown
+{% columns ratio=3:7 gap=24 %}
+<!-- column -->
+![](image.jpg)
+<!-- column -->
+这里写正文，支持 Markdown 和嵌套其他标签。
+{% endcolumns %}
+```
+
+参数说明（全部可选，具名传参）：
+
+| 参数 | 说明 | 默认值 |
+| --- | --- | --- |
+| `ratio` | 分栏比例，如 `3:7`、`1:2:1`，段数即栏数 | 等分 |
+| `cols` | 栏数（与 `ratio` 同时给出时以 `ratio` 为准） | 由 `<!-- column -->` 数量推断 |
+| `gap` | 栏间距，纯数字自动补 `px`，支持 CSS 单位 | `16px` |
+| `fill` | `fill=true` 时列内图片等比放大填满列宽（小于列宽的图片会被放大，低分辨率图会模糊） | `false` |
+
+行为说明：
+
+- 各栏内容以 `<!-- column -->` 注释行分隔，栏内 Markdown 与嵌套标签正常渲染，文章资源文件夹中的图片相对路径也会正确解析。
+- 容器使用 `align-items: flex-start`，图片栏不会被相邻长文本栏拉伸行高、破坏显示比例。
+- 各栏首个子元素的上边距和末尾子元素的下边距被归零，图片列与文字列严格顶对齐；分栏块与上下文的间距由容器统一的 `margin: 1rem 0` 提供。
+- `ratio`/`cols` 与实际分隔块数不符时，构建时输出警告并以实际块数为准。
+- 通过 `hexo.extend.injector` 注入了一段全局 CSS：屏幕宽度不超过 768px 时各栏自动上下堆叠。
 
 ## 安全注意
 

@@ -50,15 +50,47 @@
       "realName": "2024 吉比特高校 GameJam 复盘",
       "relativePath": "\\2024 吉比特高校 GameJam 复盘.md",
       "docPath": "./docs/feishu"
+    },
+    {
+      "id": 277934867,
+      "doc_id": "khkqyq8overfv48p",
+      "updated": 1784240538000,
+      "properties": {
+        "title": "个人作品展示",
+        "urlname": "khkqyq8overfv48p",
+        "date": "2026-07-17 06:22:18",
+        "updated": "2026-07-17 06:22:18",
+        "cover": "https://cdn.nlark.com/yuque/0/2025/png/36226300/1765941733179-ab8928d2-ed32-47e9-93da-34b3cdab8bc5.png",
+        "description": "Shutter时间：2025年 6 月 27~29 日职能：策划 / 队长引擎：UnityCiGA Game Jam 2025 沈阳站 线下合作作品游戏内容：讲述了一位神父前往闹鬼的庄园，使用胶卷相机和闪光灯进行除灵的故事。"
+      },
+      "catalog": [],
+      "realName": "个人作品展示",
+      "relativePath": "\\个人作品展示.md",
+      "docPath": "./docs/feishu"
     }
   ],
   "catalog": [
     {
       "type": "DOC",
+      "title": "个人作品展示",
+      "uuid": "L2VtCoI658Nsgv8N",
+      "url": "khkqyq8overfv48p",
+      "prev_uuid": "",
+      "sibling_uuid": "C4_7-VZEWcWF3RiB",
+      "child_uuid": "",
+      "parent_uuid": "",
+      "doc_id": 277934867,
+      "level": 0,
+      "id": 277934867,
+      "open_window": 1,
+      "visible": 1
+    },
+    {
+      "type": "DOC",
       "title": "2024 吉比特高校 GameJam 复盘",
       "uuid": "C4_7-VZEWcWF3RiB",
       "url": "fc6zmqoqtcu8t63c",
-      "prev_uuid": "",
+      "prev_uuid": "L2VtCoI658Nsgv8N",
       "sibling_uuid": "TlXqUAolw_LaigMn",
       "child_uuid": "",
       "parent_uuid": "",
