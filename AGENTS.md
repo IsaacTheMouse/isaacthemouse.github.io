@@ -29,13 +29,17 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 | 文件 | 职责 | 参考 |
 | --- | --- | --- |
 | `_config.yml` | Hexo 主配置（站点信息、部署目标、生成选项） | README「Hexo 与主题配置」及「远程部署」 |
-| `_config.redefine.yml` | Redefine 主题配置（496 行，包含外观、评论、插件等） | README「Hexo 与主题配置」 |
+| `_config.redefine.yml` | Redefine 主题配置（外观、评论、插件等，文件较长，编辑时使用精确匹配） | README「Hexo 与主题配置」 |
 | `elog.config.js` | Elog 多平台同步配置（读写来源、输出目录、图片处理） | README「Elog 语雀同步」 |
 | `elog.image-path-ext.js` | Elog 图片路径拓展点，按文档标题分文件夹存放，Markdown 输出纯文件名引用 | README「Elog 语雀同步」 |
 | `source/_posts/` | Hexo 文章发布目录，含各文章的资源文件夹 | README「内容维护」 |
 | `source/images/` | 全局图片，构建后映射到 `/images/` | README「图片存储与访问」 |
 | `source/_data/links.yml` | 友链页数据 | README「内容维护」 |
+| `source/_data/portfolio.yml` | 作品集结构化数据，含筛选元数据、Markdown 正文和相关链接 | README「内容维护」 |
+| `source/portfolio/` | `/portfolio/` 独立页面入口及作品集专属图片 | README「内容维护」 |
 | `scripts/columns.js` | 站点级自定义标签 `{% columns %}`，分栏布局（参数 `ratio`/`cols`/`gap`/`fill`，`<!-- column -->` 分隔，各栏顶对齐，移动端自动堆叠） | README「写作指导」 |
+| `scripts/portfolio.js` | 站点级自定义标签 `{% portfolio %}`，生成作品卡片、详情弹窗和主题按钮 | README「内容维护」 |
+| `source/css/portfolio.css`、`source/js/portfolio.js` | 作品集页面样式与兼容 Swup 的弹窗交互 | README「内容维护」 |
 | `scaffolds/` | `hexo new` 命令使用的文章模板（draft/page/post） | Hexo 文档 |
 | `.elog.env` | Elog 凭据文件，已被 gitignore，禁止提交 | README「安全注意」 |
 
@@ -77,12 +81,20 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 - 为访问困难的部分网站 icon 上传了本地文件
 ```
 
+## 可用技能
+
+| 技能 | 文件 | 用途 |
+| --- | --- | --- |
+| `hexo-post-polish` | `.opencode/skills/hexo-post-polish/SKILL.md` | 语雀同步后文章整理（front-matter 规范化 + 图片转 webp） |
+| `blog-publish` | `.opencode/skills/blog-publish/SKILL.md` | 博客发布流程（图片检查 → 功能日志 → 提交 → 摘要 → 部署） |
+
 ## 新增文章
 
 1. 使用 `npx hexo new post "标题"` 基于 `scaffolds/post.md` 模板创建。
 2. 或通过 `elog sync -e .elog.env` 从语雀同步（见 README「Elog 语雀同步」）。
-3. **语雀同步后处理：** 使用 `hexo-post-polish` skill 规范化 front-matter 并将图片转换为 webp（含动图）。Skill 详情见 `.opencode/skills/hexo-post-polish/SKILL.md`。
+3. **语雀同步后处理：** 使用 `hexo-post-polish` skill 规范化 front-matter 并将图片转换为 webp（含动图）。
 4. 文章中使用 `{% callout %}` 而非已弃用的 `{% note %}` / `{% notel %}`（详见 [Callout 文档](https://redefine-docs.ohevan.com/zh/docs/modules/callout)）。
+5. **不要在 Markdown 正文开头写 `#` 标题**——标题只在 front-matter 的 `title` 字段中定义，否则会重复显示。
 
 ### 图片存储与引用
 
@@ -93,23 +105,25 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 - 文章内使用 Markdown 语法 `![](image.jpg)` 引用，构建时自动解析为正确的绝对路径。
 - 跨文章共用的图片放入 `source/images/`，引用路径为 `/images/<filename>`。
 
+## 作品集维护
+
+- 作品集不是文章，页面入口固定为 `source/portfolio/index.md`，不要移动到 `source/_posts/`。
+- 项目内容只在 `source/_data/portfolio.yml` 中维护；`game_content` 和 `work_content` 使用 YAML `|` 块保存 Markdown。
+- `engines`、`roles`、`types` 使用受控数组值，不要合并为自然语言字符串，以便未来直接添加筛选控件。
+- `year` 用于年份筛选，`sort_date` 使用 `YYYY-MM-DD` 格式并用于排序扩展，`period` 仅用于展示。
+- 作品集图片放入 `source/portfolio/assets/`，引用格式为 `/portfolio/assets/<filename>`。
+- 相关入口写入 `links` 数组；站内链接使用站点绝对路径，外部链接设置 `external: true`，渲染时统一复用 Redefine `{% button %}`。
+- 弹窗正文使用纵向 Markdown 图文流，不要默认引入幻灯片；只有在明确新增媒体画廊需求时再扩展。
+
 ## 质量工具
 
 项目当前**没有配置** linting、格式化工具（ESLint、Prettier 等）、Git hooks 或 CI/CD 流水线。不要尝试运行 `npm run lint` 或类似命令，这些脚本不存在。
 
-`.github/dependabot.yml` 仅用于 npm 依赖的自动更新，不涉及构建或部署。
-
 ## 注意事项
 
-- `.elog.env`、`db.json`、`public/`、`.deploy_git/`、`.deploy*/` 已被 gitignore，不要提交。
+- `.elog.env`、`db.json`、`public/`、`.deploy_git/`、`.deploy*/`、`docs/` 已被 gitignore，不要提交。
 - `_config.yml` 中的 `url` 是占位值 `http://example.com`，真实站点 URL 在 `_config.redefine.yml` 中配置为 `https://isaacthemouse.github.io`。
 - 全局图片引用路径格式为 `/images/<filename>`，对应 `source/images/<filename>`。文章专属图片使用相对路径 `![](filename.ext)`，存放于文章同名的资源文件夹中。
 - 不要修改 `public/` 或 `.deploy_git/` 中的文件——它们会在下次构建时被覆盖。
 - 凭据（GitHub Token、语雀密码等）只应存在于 `.elog.env` 或环境变量中，绝对不能写入配置文件或提交到仓库。
 
-## 参考资料
-
-- [Hexo 文档](https://hexo.io/zh-cn/docs/)
-- [Redefine 主题文档](https://redefine-docs.ohevan.com/)
-- [Elog 文档](https://elog.1874.cool/)
-- [Conventional Commits](https://www.conventionalcommits.org/)
