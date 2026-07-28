@@ -10,12 +10,17 @@
 ├── _config.redefine.yml    # Redefine 主题配置
 ├── elog.config.js          # Elog 同步配置
 ├── scripts/                # 站点级 Hexo 脚本（自定义标签插件等）
-│   └── columns.js          # 自定义 {% columns %} 分栏标签
+│   ├── columns.js          # 自定义 {% columns %} 分栏标签
+│   └── portfolio.js        # 作品集卡片与详情弹窗生成标签
 ├── source/
 │   ├── _posts/             # Hexo 实际发布的文章
 │   ├── _data/links.yml     # 友链页数据
+│   ├── _data/portfolio.yml # 作品集结构化数据
+│   ├── css/portfolio.css   # 作品集页面样式
 │   ├── images/             # 会被发布到 /images/ 的本地图片
+│   ├── js/portfolio.js     # 作品集弹窗交互
 │   ├── links/              # 友链页面
+│   ├── portfolio/          # 独立作品集页面与专属图片
 │   └── tags/               # 标签页面
 ├── docs/                   # 同步、整理和备份用文档，不直接等同于发布目录
 ├── public/                 # Hexo 生成产物，已被 gitignore
@@ -98,6 +103,16 @@ npx hexo new post "文章标题"
       avatar: https://feishiko.top/assets/img/logo.png
       thumbnail: https://feishiko.top/assets/card-XNCB85eX.png
 ```
+
+作品集页位于 `/portfolio/`，由以下文件共同维护：
+
+- `source/portfolio/index.md` 是页面入口，使用 `{% portfolio %}` 标签生成内容。
+- `source/_data/portfolio.yml` 保存项目元数据、Markdown 正文和相关链接。
+- `source/portfolio/assets/` 保存作品集专属图片，数据中使用 `/portfolio/assets/<filename>` 引用。
+- `scripts/portfolio.js` 生成卡片、详情弹窗、筛选数据属性和 Redefine `{% button %}` 链接。
+- `source/css/portfolio.css` 与 `source/js/portfolio.js` 分别维护页面样式和弹窗交互。
+
+每个项目至少填写 `id`、`title`、`year`、`sort_date`、`period`、`status`、`engines`、`roles`、`types`、`summary`、`cover`、`game_content` 和 `work_content`。`engines`、`roles`、`types` 必须使用数组；这些字段会生成 `data-year`、`data-engine`、`data-role`、`data-type`，供未来的筛选控件使用。正文使用 YAML `|` 块保存 Markdown，缩进保持为 4 个空格。可选的 `links` 数组会使用主题的 `{% button %}` 标签渲染，外部链接设置 `external: true`。
 
 内容更新也建议使用规范化提交信息。遵循 [Conventional Commits](https://www.conventionalcommits.org/) 格式：
 

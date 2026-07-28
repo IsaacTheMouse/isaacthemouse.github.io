@@ -1,0 +1,169 @@
+- id: shutter
+  title: Shutter
+  year: 2025
+  sort_date: '2025-06-27'
+  period: 2025 年 6 月 27～29 日
+  status: completed
+  engines:
+    - Unity
+  roles:
+    - 策划
+    - 队长
+  types:
+    - game-jam
+    - team
+  event: CiGA Game Jam 2025 沈阳站线下合作作品
+  summary: 一款使用胶卷相机和闪光灯探索闹鬼庄园、还原人物身份的推理游戏。
+  cover: /portfolio/assets/4082ad8fa151076762976512e28fea5f.webp
+  game_content: |
+    讲述了一位神父前往闹鬼的庄园，使用胶卷相机和闪光灯进行除灵的故事。
+
+    因遭到诅咒，这个庄园中居住的领主一家主仆全部变成了会说话的家具，并且遗忘了自己的身份和经历。玩家需要通过对话和探索不断收集信息，一步一步地还原他们的遭遇，拼凑出每个人的身份，最终找出他们被诅咒的原因，然后将他们一一超度。
+  work_content: |
+    通过模仿《奥伯拉丁的归来》《无人在线》两款游戏，设计一个基于人际关系的推理剧本，填充人物的性格、人际关系等。
+
+    和其他成员协作，参考游戏《TOEM》，使用 Unity 设计并实现了一个 2D / 3D 混合的场景。其中，无法互动的场景物体使用 3D 建模，可以互动的则是始终面朝玩家相机的 2D 物体。
+
+    通过该设计，降低了程序和美术的工作量，使得 UI 和实际游玩场景中的素材可复用，同时也使得玩家一眼就能认出场景中的可互动元素。
+
+    ![开发过程中的场景截图](/portfolio/assets/b2c89f82f6464f3129d75db11b8e0c8d.webp)
+
+    ![拍照 UI](/portfolio/assets/1e6d93248ff88568932b9d2129397b4f.webp)
+
+- id: wake-up
+  title: All you have to do is wake up
+  year: 2024
+  sort_date: '2024-11-22'
+  period: 2024 年 11 月 22 日～12 月 1 日
+  status: completed
+  engines:
+    - Unity
+  roles:
+    - 策划
+    - 队长
+  types:
+    - game-jam
+    - team
+  event: 2024 吉比特高校 GameJam 挑战赛线上合作作品
+  summary: 一款以梦境与死亡为主题、以多世界切换为主要玩法的平台解谜游戏。
+  cover: /portfolio/assets/9109f023baecd5c5fcf0e6a8d4cab398.webp
+  game_content: |
+    致敬电影《盗梦空间》，一款以“梦境与死亡”为主题、多世界切换为主要玩法的平台解谜游戏。
+  work_content: |
+    使用三种直观的机制（锁钥、推箱、尖刺）与游戏的主要机制（多世界切换）构筑了 7 个精致的关卡，机制两两之间都能达到有机联动，并通过关卡设计为每个机制都建立了有效的引导。
+
+    使用了树状图进行关卡管理，不仅能提供更清晰的关卡关系，也有助于清晰的引导设计及冗余关卡的剔除。
+
+    在具体的关卡设计图中使用网格填色的方式，以期获得与程序端更方便快捷的协作效果。因程序实现使用了 TileMap，网格设计能与实际实现一一对应，使用不同颜色标识不同功能既能在设计阶段进行直观的验证，也方便程序进行地图摆放。
+
+    ![树状关卡管理](/portfolio/assets/7b3b58f222727b6605e5a738535fdd2b.webp)
+
+    ![关卡设计草稿](/portfolio/assets/762a086d411f279e7d5b1e2b0966d550.webp)
+  links:
+    - type: article
+      label: 阅读开发复盘
+      url: /2026/07/08/wake-up-review/
+      icon: fa-regular fa-book-open
+
+- id: graduation-shooter
+  title: 未命名项目
+  year: 2025
+  sort_date: '2025-03-01'
+  period: 2025 年 3～5 月
+  status: completed
+  engines:
+    - Godot
+  roles:
+    - SOLO
+  types:
+    - graduation-project
+    - solo
+  event: 毕业设计项目
+  summary: 一个拥有基础 NPC AI、以目标点争夺为核心的俯视角射击游戏。
+  cover: /portfolio/assets/ef77f0cb473465d29b9aa3bf23d4d09a.webp
+  game_content: |
+    我的毕业设计项目，一个拥有基础 NPC AI 的俯视角射击游戏。玩家通过与 AI 队友协同，对抗敌人，占领目标点并不断推进以获得胜利。
+  work_content: |
+    实现了俯视角射击的核心 3C 系统：
+
+    - 实现角色移动、瞄准与射击等基础控制逻辑；
+    - 实现了两种武器（半自动手枪、全自动冲锋枪）及对应的射击模式。
+
+    设计并实现了一套基于有限状态机的 NPC 行为系统：状态由巡逻、接敌、前进构成，根据视野中是否有敌人、目标点状态等条件进行切换。结合 Godot 内置的 A*2D 寻路类，实现了动态地形感知等寻路功能。
+
+    构建了一个以目标点为核心的关卡系统。地图中布置有多个可占领的据点，作为战斗的阶段性目标，玩家需与 AI 队友协同，占领据点并逐步推进至下一区域。据点会根据范围内敌我单位数量累计控制权，当控制权切换时，通过信号通知管理器进行处理。
+
+    这些系统的各个组件中，自下而上的部分通过 Godot 内置的信号系统进行通信，自上而下则是直接进行方法调用。这使得脚本间拥有较低的耦合度和良好的扩展性，无论拥有多少个 NPC 或据点实例，上层的管理器脚本都能对其进行有效管理。
+
+    ![该项目的引擎内截图](/portfolio/assets/ef77f0cb473465d29b9aa3bf23d4d09a.webp)
+
+- id: equal-to-p
+  title: Equal to P
+  year: 2024
+  sort_date: '2024-01-26'
+  period: 2024 年 1 月 26～28 日
+  status: completed
+  engines:
+    - Godot
+  roles:
+    - 美术
+  types:
+    - game-jam
+    - team
+  event: Global Game Jam 2024 深圳凉屋站线下合作作品
+  award: 站点人气投票第一名
+  summary: 一款由布尔代数和颜文字启发、需要构造恒真表达式的逻辑解谜游戏。
+  cover: /portfolio/assets/8a696b3e101fb65cba96c6fdeb58c779.webp
+  game_content: |
+    一款由布尔代数和颜文字启发的逻辑解谜游戏，（GameJam 版）有 5 个章节、23+ 关卡。玩家通过在给定的算式中填入不同元素，让表达式恒为真的同时，使式子的某个部分能够构成笑脸颜文字。
+  work_content: |
+    除了一部分纸面上的策划工作，我主要负责视觉概念设计和美术资产的产出。
+
+    ![游戏第一关的截图，背景中的颜文字除了作为装饰，也用于提示玩家通关条件](/portfolio/assets/9e40ccc68b8f63bab8955953c3c5b682.webp)
+
+    基于“布尔逻辑”这一抽象概念，结合笑脸颜文字，设计了具象化的视觉符号，并为项目规定了不同状态所对应的美术表达（颜色、形态等），以配合无文字引导。
+
+    结合像素画工具 Aseprite，在引擎中使用 TileSet 完成了一套像素 Sprite，使用引擎的 UI 工具搭建了配套的 UI 和主界面，并通过 Git 与其他成员进行合作开发。
+
+    我在结束开发后制作了一支宣传视频，该视频已在 B 站获得 4 万播放量。
+
+    ![为该项目制作的 SpriteSheet](/portfolio/assets/4a4c1d9562dfa02a5cb90f2bac6c8b71.webp)
+  links:
+    - type: github
+      label: GitHub
+      url: https://github.com/ligen131/equal_to_p
+      icon: fa-brands fa-github
+      external: true
+    - type: video
+      label: 宣传视频
+      url: https://www.bilibili.com/video/BV1by421e7fn/
+      icon: fa-solid fa-video
+      external: true
+
+- id: wake-up-3d
+  title: 未命名项目
+  year: 2026
+  sort_date: '2026-03-01'
+  period: 2026 年 3 月至今
+  status: ongoing
+  engines:
+    - Godot
+  roles:
+    - SOLO
+  types:
+    - personal
+    - prototype
+    - solo
+    - ai-workflow
+  event: 个人开发中的 3D 原型
+  summary: 《All you have to do is wake up》的 3D 实现，也是用于熟悉各类 AI 工具的实验项目。
+  cover: /portfolio/assets/bb8c06d9ab8f5998e4258ecbc20b7990.webp
+  game_content: |
+    《All you have to do is wake up》的 3D 实现，主要用于熟悉各类 AI 工具。
+  work_content: |
+    在这个项目中，我尝试搭建一个基于文生图模型和编程智能体等 AI 工具的工作流，主要包括两个方面：
+
+    - 通过 ComfyUI 中的本地文生图、图生图、3D 建模工作流，将关卡设计的文字稿或草图转换为引擎内可用的 OBJ；
+    - 通过 Codex 这样的编程智能体进行项目具体逻辑的实现。
+
+    ![一个早期原型的演示](/portfolio/assets/bb8c06d9ab8f5998e4258ecbc20b7990.webp)

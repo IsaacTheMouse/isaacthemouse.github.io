@@ -208,6 +208,9 @@ navbar:
     Home: 
       path: / 
       icon: fa-regular fa-house # can be empty
+    Portfolio:
+      path: /portfolio/
+      icon: fa-solid fa-gamepad
     Friends:
       icon: fa-solid fa-link #图标
       path: /links/

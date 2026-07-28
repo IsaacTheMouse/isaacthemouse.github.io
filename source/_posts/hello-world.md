@@ -21,3 +21,5 @@ excerpt: '使用 [Hexo](https://hexo.io/) 重构了个人博客，同时本文�
   - 修改了[图片的嵌入方式](https://hexo.io/zh-cn/docs/asset-folders)，（希望能够）用来绕过429。
 - 2026/07/20
   - 添加了[自定义 `{% columns %}` 分栏标签](https://github.com/EvanNotFound/hexo-theme-redefine/issues/322)，支持图文左右分栏布局、移动端自动堆叠。
+- 2026/07/28
+  - 新增[个人作品展示](/portfolio/)页面，以卡片与弹窗形式展示历年 GameJam 和个人项目。
