@@ -8,15 +8,16 @@ echo.
 echo ==============================
 echo   Blog Tool - myblog
 echo ==============================
-echo   [1] Elog 拉取（语雀同步）
-echo   [2] 启动本地服务器
+echo   [1] 启动本地服务器
+echo   [2] Elog 拉取（语雀同步）
 echo   [3] 远程部署
 echo   [0] 退出
 echo ==============================
-set /p choice=请选择: 
+set "choice=1"
+set /p choice=请选择:  [%choice%]
 
-if "%choice%"=="1" goto sync
-if "%choice%"=="2" goto server
+if "%choice%"=="1" goto server
+if "%choice%"=="2" goto sync
 if "%choice%"=="3" goto deploy
 if "%choice%"=="0" exit /b 0
 echo 无效选项，请重新输入。
@@ -36,7 +37,7 @@ call elog sync -e .elog.env
 goto menu
 
 :server
-call npx hexo server
+start "Hexo Server" /wait cmd /c "npx hexo server -o"
 goto menu
 
 :deploy
