@@ -25,9 +25,9 @@ info:
 # Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
   # Favicon
-  favicon: /images/redefine-favicon.svg
+  favicon: /images/icon.png
   # Site logo
-  logo: 
+  logo: /images/icon.png
   # Site avatar
   avatar: https://gravatar.com/avatar/16542fc12fa8f95eec6b4385e102ae48857e1a0cb601ed4c4b60ae57ffe93a73?size=512&d=initials
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -131,8 +131,8 @@ home_banner:
   style: fixed # static or fixed
   # Home banner image
   image: 
-    light: /images/wallhaven-wqery6-light.webp # light mode
-    dark: /images/wallhaven-wqery6-dark.webp # dark mode
+    light: /images/day_bg_cut.webp # light mode
+    dark: /images/night_bg_cut.webp # dark mode
   # Home banner title
   title: 老鼠洞里有什么
   # Home banner subtitle
