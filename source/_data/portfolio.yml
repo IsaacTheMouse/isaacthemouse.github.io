@@ -30,6 +30,49 @@
 
     ![拍照 UI](/portfolio/assets/1e6d93248ff88568932b9d2129397b4f.webp)
 
+- id: equal-to-p
+  title: Equal to P
+  year: 2024
+  sort_date: '2024-01-26'
+  period: 2024 年 1 月 26～28 日
+  status: completed
+  engines:
+    - Godot
+  roles:
+    - 美术
+  types:
+    - game-jam
+    - team
+  event: Global Game Jam 2024 深圳凉屋站线下合作作品
+  award: 站点人气投票第一名
+  summary: 一款由布尔代数和颜文字启发、需要构造恒真表达式的逻辑解谜游戏。
+  cover: /portfolio/assets/8a696b3e101fb65cba96c6fdeb58c779.webp
+  game_content: |
+    一款由布尔代数和颜文字启发的逻辑解谜游戏，（GameJam 版）有 5 个章节、23+ 关卡。玩家通过在给定的算式中填入不同元素，让表达式恒为真的同时，使式子的某个部分能够构成笑脸颜文字。
+  work_content: |
+    除了一部分纸面上的策划工作，我主要负责视觉概念设计和美术资产的产出。
+
+    ![游戏第一关的截图，背景中的颜文字除了作为装饰，也用于提示玩家通关条件](/portfolio/assets/9e40ccc68b8f63bab8955953c3c5b682.webp)
+
+    基于“布尔逻辑”这一抽象概念，结合笑脸颜文字，设计了具象化的视觉符号，并为项目规定了不同状态所对应的美术表达（颜色、形态等），以配合无文字引导。
+
+    结合像素画工具 Aseprite，在引擎中使用 TileSet 完成了一套像素 Sprite，使用引擎的 UI 工具搭建了配套的 UI 和主界面，并通过 Git 与其他成员进行合作开发。
+
+    我在结束开发后制作了一支宣传视频，该视频已在 B 站获得 4 万播放量。
+
+    ![为该项目制作的 SpriteSheet](/portfolio/assets/4a4c1d9562dfa02a5cb90f2bac6c8b71.webp)
+  links:
+    - type: github
+      label: GitHub
+      url: https://github.com/ligen131/equal_to_p
+      icon: fa-brands fa-github
+      external: true
+    - type: video
+      label: 宣传视频
+      url: https://www.bilibili.com/video/BV1by421e7fn/
+      icon: fa-solid fa-video
+      external: true
+
 - id: wake-up
   title: All you have to do is wake up
   year: 2024
@@ -96,49 +139,6 @@
     这些系统的各个组件中，自下而上的部分通过 Godot 内置的信号系统进行通信，自上而下则是直接进行方法调用。这使得脚本间拥有较低的耦合度和良好的扩展性，无论拥有多少个 NPC 或据点实例，上层的管理器脚本都能对其进行有效管理。
 
     ![该项目的引擎内截图](/portfolio/assets/ef77f0cb473465d29b9aa3bf23d4d09a.webp)
-
-- id: equal-to-p
-  title: Equal to P
-  year: 2024
-  sort_date: '2024-01-26'
-  period: 2024 年 1 月 26～28 日
-  status: completed
-  engines:
-    - Godot
-  roles:
-    - 美术
-  types:
-    - game-jam
-    - team
-  event: Global Game Jam 2024 深圳凉屋站线下合作作品
-  award: 站点人气投票第一名
-  summary: 一款由布尔代数和颜文字启发、需要构造恒真表达式的逻辑解谜游戏。
-  cover: /portfolio/assets/8a696b3e101fb65cba96c6fdeb58c779.webp
-  game_content: |
-    一款由布尔代数和颜文字启发的逻辑解谜游戏，（GameJam 版）有 5 个章节、23+ 关卡。玩家通过在给定的算式中填入不同元素，让表达式恒为真的同时，使式子的某个部分能够构成笑脸颜文字。
-  work_content: |
-    除了一部分纸面上的策划工作，我主要负责视觉概念设计和美术资产的产出。
-
-    ![游戏第一关的截图，背景中的颜文字除了作为装饰，也用于提示玩家通关条件](/portfolio/assets/9e40ccc68b8f63bab8955953c3c5b682.webp)
-
-    基于“布尔逻辑”这一抽象概念，结合笑脸颜文字，设计了具象化的视觉符号，并为项目规定了不同状态所对应的美术表达（颜色、形态等），以配合无文字引导。
-
-    结合像素画工具 Aseprite，在引擎中使用 TileSet 完成了一套像素 Sprite，使用引擎的 UI 工具搭建了配套的 UI 和主界面，并通过 Git 与其他成员进行合作开发。
-
-    我在结束开发后制作了一支宣传视频，该视频已在 B 站获得 4 万播放量。
-
-    ![为该项目制作的 SpriteSheet](/portfolio/assets/4a4c1d9562dfa02a5cb90f2bac6c8b71.webp)
-  links:
-    - type: github
-      label: GitHub
-      url: https://github.com/ligen131/equal_to_p
-      icon: fa-brands fa-github
-      external: true
-    - type: video
-      label: 宣传视频
-      url: https://www.bilibili.com/video/BV1by421e7fn/
-      icon: fa-solid fa-video
-      external: true
 
 - id: wake-up-3d
   title: 未命名项目
