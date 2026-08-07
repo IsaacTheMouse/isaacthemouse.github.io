@@ -209,6 +209,8 @@ elog sync -e .elog.env --force
 
 Elog 同步后文章和图片均进入 `./docs/feishu/`，图片按文档标题分文件夹存放（`./docs/feishu/<标题>/image.png`），Markdown 中以纯文件名 `![](image.png)` 引用，与 Hexo 文章资源文件夹行为一致，无需手动整理。
 
+`docs/feishu/*.md` 源文件被 git 跟踪（图片文件夹被忽略），作为同步内容 diff 的基线。同步后可运行 `git diff docs/feishu/` 查看语雀端本次更新了哪些内容，再据此整理文章。
+
 ## 图片存储与访问
 
 图片维护优先考虑两件事：降低体积，以及保证访问稳定性。
@@ -238,6 +240,29 @@ Elog 同步后文章和图片均进入 `./docs/feishu/`，图片按文档标题�
 请不要在 Markdown 文章开头加上 # 标题
 
 请仅在 Markdown 文件的 `front-matter` 中的 `title:` 属性中写上你的标题，否则会出现复数标题。
+
+### 响应式图片宽度
+
+`source/css/article-images.css` 提供 `img-width-50`、`img-width-70` 和 `img-width-90` 三档正文图片宽度。桌面端分别占正文容器宽度的 50%、70% 和 90%，屏幕宽度不超过 768px 时自动占满正文宽度并保持原始宽高比。
+
+文章资源文件夹中的图片通过 `{% asset_img %}` 的 class 参数使用，class 写在图片文件名前：
+
+```markdown
+{% asset_img img-width-70 image.webp '"图片标题" "替代文本"' %}
+```
+
+全局图片通过 `{% img %}` 使用相同的 class：
+
+```markdown
+{% img img-width-70 /images/image.webp '"图片标题" "替代文本"' %}
+```
+
+通常可用 `img-width-50` 展示图标或窄图、`img-width-70` 展示普通截图、`img-width-90` 展示包含较多细节的宽图。无需控制宽度的图片继续使用 `![](image.webp)`。样式由 `scripts/article-images.js` 注入，不要直接修改 npm 安装的主题文件。
+
+注意 `{% asset_img %}` 的标题参数是 `'"标题" "替代文本"'` 双引号字符串，**第一个是 title，第二个是 alt**。主题在 `image_caption: true`（见 `_config.redefine.yml` 的 `articles.style.image_caption`）时只对带 `alt` 属性的 `<img>` 生成 `<figcaption>` 图注，因此：
+
+- 需要显示图片标题时，必须同时提供 title 和 alt：`{% asset_img img-width-70 image.webp '"标题" "标题"' %}`；只写一个字符串（如 `'"标题"'`）会生成 title 而缺少 alt，图注不会显示。
+- 不需要标题时省略该参数：`{% asset_img img-width-70 image.webp %}`。
 
 ### 自定义分栏标签 columns
 

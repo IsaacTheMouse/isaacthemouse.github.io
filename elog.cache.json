@@ -37,29 +37,30 @@
     {
       "id": 277309688,
       "doc_id": "fc6zmqoqtcu8t63c",
-      "updated": 1783833009000,
+      "updated": 1786048876000,
       "properties": {
         "title": "2024 吉比特高校 GameJam 复盘",
         "urlname": "fc6zmqoqtcu8t63c",
         "date": "2026-07-12 13:10:08",
-        "updated": "2026-07-12 13:10:09",
+        "updated": "2026-08-07 04:41:16",
         "cover": "https://cdn.nlark.com/yuque/0/2025/png/36226300/1760353853086-b66304b9-488f-498f-ac70-325d8e7d849a.png",
         "description": "本文写于 2024 年 12 月 GameJam 结束后，迁移至博客时小有改动机制介绍核心机制在 2024 吉比特高校 GameJam 中，我根据主题【睡梦】联想到电影《盗梦空间》，并由此设计了一个关于“多层梦境”和“死亡”的逻辑解谜玩法。在《盗梦空间》中，人们可以在设备辅助下潜入梦境，并且梦..."
       },
       "catalog": [],
       "realName": "2024 吉比特高校 GameJam 复盘",
       "relativePath": "\\2024 吉比特高校 GameJam 复盘.md",
+      "needUpdate": 1,
       "docPath": "./docs/feishu"
     },
     {
       "id": 277934867,
       "doc_id": "khkqyq8overfv48p",
-      "updated": 1784240538000,
+      "updated": 1785575251000,
       "properties": {
         "title": "个人作品展示",
         "urlname": "khkqyq8overfv48p",
         "date": "2026-07-17 06:22:18",
-        "updated": "2026-07-17 06:22:18",
+        "updated": "2026-08-01 17:07:31",
         "cover": "https://cdn.nlark.com/yuque/0/2025/png/36226300/1765941733179-ab8928d2-ed32-47e9-93da-34b3cdab8bc5.png",
         "description": "Shutter时间：2025年 6 月 27~29 日职能：策划 / 队长引擎：UnityCiGA Game Jam 2025 沈阳站 线下合作作品游戏内容：讲述了一位神父前往闹鬼的庄园，使用胶卷相机和闪光灯进行除灵的故事。"
       },
@@ -67,15 +68,69 @@
       "realName": "个人作品展示",
       "relativePath": "\\个人作品展示.md",
       "docPath": "./docs/feishu"
+    },
+    {
+      "id": 279786801,
+      "doc_id": "glk9dosggohnn72z",
+      "updated": 1785701644000,
+      "properties": {
+        "title": "纪元变异 杂谈",
+        "urlname": "glk9dosggohnn72z",
+        "date": "2026-08-01 17:09:30",
+        "updated": "2026-08-03 04:14:04",
+        "cover": "https://cdn.nlark.com/yuque/0/2026/png/36226300/1785580025425-e3492446-bc16-48f2-bb84-8643213b9a86.png",
+        "description": "关卡节奏目前玩下来除了剧情，让我觉得最想吐槽的就是部分关卡的节奏问题，举例来说，第一章的穷追不舍有一段屋顶追逐战，但本来应有的流畅的战斗体验，追逐战的紧张感流程：主角被偷袭→追逐→伪 Boss 战小插曲→追逐→Boss 战一阶段（屋顶）→转场动画→Boss 战二阶段（地下）全程有大量需要按键交..."
+      },
+      "catalog": [],
+      "realName": "纪元变异 杂谈",
+      "relativePath": "\\纪元变异 杂谈.md",
+      "docPath": "./docs/feishu"
+    },
+    {
+      "id": 280303187,
+      "doc_id": "ekc9mzdc1rpcctq4",
+      "updated": 1786029707000,
+      "properties": {
+        "title": "关卡设计-补",
+        "urlname": "ekc9mzdc1rpcctq4",
+        "date": "2026-08-05 21:09:13",
+        "updated": "2026-08-06 23:21:47",
+        "cover": "https://cdn.nlark.com/yuque/0/2026/png/36226300/1785969452578-4e3f1ea3-ead8-436c-b790-1039d3c145a3.png?x-oss-process=image%2Fcrop%2Cx_99%2Cy_66%2Cw_520%2Ch_194",
+        "description": "设计过程很高程度地参考了 BV1Qe411U7XD，感谢 SteveLee 的这个思路分享，让我从一开始就能以一个清晰的逻辑进行关卡设计。在本项目中，难度最高的两个关卡实际上是在项目的最前期被设计出来的。此时我还处于机制设计的摇摆阶段，虽然已经有了四个可用的机制，但我无法确定机制之间的交互是否..."
+      },
+      "catalog": [
+        {
+          "title": "2024 吉比特高校 GameJam 复盘",
+          "doc_id": "ekc9mzdc1rpcctq4"
+        }
+      ],
+      "realName": "关卡设计-补",
+      "relativePath": "\\关卡设计-补.md",
+      "docPath": "./docs/feishu"
     }
   ],
   "catalog": [
     {
       "type": "DOC",
+      "title": "纪元变异 杂谈",
+      "uuid": "DNyOUQr8jzCf629U",
+      "url": "glk9dosggohnn72z",
+      "prev_uuid": "",
+      "sibling_uuid": "L2VtCoI658Nsgv8N",
+      "child_uuid": "",
+      "parent_uuid": "",
+      "doc_id": 279786801,
+      "level": 0,
+      "id": 279786801,
+      "open_window": 1,
+      "visible": 1
+    },
+    {
+      "type": "DOC",
       "title": "个人作品展示",
       "uuid": "L2VtCoI658Nsgv8N",
       "url": "khkqyq8overfv48p",
-      "prev_uuid": "",
+      "prev_uuid": "DNyOUQr8jzCf629U",
       "sibling_uuid": "C4_7-VZEWcWF3RiB",
       "child_uuid": "",
       "parent_uuid": "",
@@ -92,11 +147,26 @@
       "url": "fc6zmqoqtcu8t63c",
       "prev_uuid": "L2VtCoI658Nsgv8N",
       "sibling_uuid": "TlXqUAolw_LaigMn",
-      "child_uuid": "",
+      "child_uuid": "aJMeLYaniO_7tYFe",
       "parent_uuid": "",
       "doc_id": 277309688,
       "level": 0,
       "id": 277309688,
+      "open_window": 1,
+      "visible": 1
+    },
+    {
+      "type": "DOC",
+      "title": "关卡设计-补",
+      "uuid": "aJMeLYaniO_7tYFe",
+      "url": "ekc9mzdc1rpcctq4",
+      "prev_uuid": "C4_7-VZEWcWF3RiB",
+      "sibling_uuid": "",
+      "child_uuid": "",
+      "parent_uuid": "C4_7-VZEWcWF3RiB",
+      "doc_id": 280303187,
+      "level": 1,
+      "id": 280303187,
       "open_window": 1,
       "visible": 1
     },

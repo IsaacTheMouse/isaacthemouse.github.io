@@ -38,6 +38,7 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 | `source/_data/portfolio.yml` | 作品集结构化数据，含筛选元数据、Markdown 正文和相关链接 | README「内容维护」 |
 | `source/portfolio/` | `/portfolio/` 独立页面入口及作品集专属图片 | README「内容维护」 |
 | `scripts/columns.js` | 站点级自定义标签 `{% columns %}`，分栏布局（参数 `ratio`/`cols`/`gap`/`fill`，`<!-- column -->` 分隔，各栏顶对齐，移动端自动堆叠） | README「写作指导」 |
+| `scripts/article-images.js`、`source/css/article-images.css` | 正文图片的响应式宽度档位（50%/70%/90%，移动端 100%） | README「写作指导」 |
 | `scripts/portfolio.js` | 站点级自定义标签 `{% portfolio %}`，生成作品卡片、详情弹窗和主题按钮 | README「内容维护」 |
 | `source/css/portfolio.css`、`source/js/portfolio.js` | 作品集页面样式与兼容 Swup 的弹窗交互 | README「内容维护」 |
 | `scaffolds/` | `hexo new` 命令使用的文章模板（draft/page/post） | Hexo 文档 |
@@ -85,14 +86,14 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 
 | 技能 | 文件 | 用途 |
 | --- | --- | --- |
-| `hexo-post-polish` | `.opencode/skills/hexo-post-polish/SKILL.md` | 语雀同步后文章整理（front-matter 规范化 + 图片转 webp） |
+| `hexo-post-polish` | `.opencode/skills/hexo-post-polish/SKILL.md` | 语雀同步后文章整理（front-matter 规范化 + 图片转 webp + `{% asset_img %}` 导入 + 语雀 `:::info` 转 `{% callout %}`） |
 | `blog-publish` | `.opencode/skills/blog-publish/SKILL.md` | 博客发布流程（图片检查 → 功能日志 → 提交 → 摘要 → 部署） |
 
 ## 新增文章
 
 1. 使用 `npx hexo new post "标题"` 基于 `scaffolds/post.md` 模板创建。
 2. 或通过 `elog sync -e .elog.env` 从语雀同步（见 README「Elog 语雀同步」）。
-3. **语雀同步后处理：** 使用 `hexo-post-polish` skill 规范化 front-matter 并将图片转换为 webp（含动图）。
+3. **语雀同步后处理：** 使用 `hexo-post-polish` skill 规范化 front-matter，图片全部转 webp 并以 `{% asset_img %}` 导入（超过 700px 限制为 70%），语雀 `:::info` 等语法转为 `{% callout %}`。
 4. 文章中使用 `{% callout %}` 而非已弃用的 `{% note %}` / `{% notel %}`（详见 [Callout 文档](https://redefine-docs.ohevan.com/zh/docs/modules/callout)）。
 5. **不要在 Markdown 正文开头写 `#` 标题**——标题只在 front-matter 的 `title` 字段中定义，否则会重复显示。
 
@@ -103,6 +104,7 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 - 使用 `hexo new post` 创建文章时，Hexo 会自动在 `source/_posts/` 下创建与文章同名的资源文件夹。
 - 将文章专属图片放入对应的资源文件夹中。
 - 文章内使用 Markdown 语法 `![](image.jpg)` 引用，构建时自动解析为正确的绝对路径。
+- 需要控制正文图片宽度时，使用 `{% asset_img img-width-70 image.jpg '"图片标题" "替代文本"' %}`；class 写在文件名前，可选值为 `img-width-50`、`img-width-70`、`img-width-90`，移动端均自动显示为 100% 宽度。
 - 跨文章共用的图片放入 `source/images/`，引用路径为 `/images/<filename>`。
 
 ## 作品集维护
@@ -121,7 +123,8 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 
 ## 注意事项
 
-- `.elog.env`、`db.json`、`public/`、`.deploy_git/`、`.deploy*/`、`docs/` 已被 gitignore，不要提交。
+- `.elog.env`、`db.json`、`public/`、`.deploy_git/`、`.deploy*/` 已被 gitignore，不要提交。
+- `docs/` 下只有语雀同步的 `.md` 源文件（`docs/feishu/*.md`）被 git 跟踪，作为同步内容 diff 的基线；`docs/feishu/<标题>/` 图片文件夹及其他 docs 内容仍被 gitignore，不要提交。同步后可用 `git diff docs/feishu/` 确认语雀端更新了哪些内容。
 - `_config.yml` 中的 `url` 是占位值 `http://example.com`，真实站点 URL 在 `_config.redefine.yml` 中配置为 `https://isaacthemouse.github.io`。
 - 全局图片引用路径格式为 `/images/<filename>`，对应 `source/images/<filename>`。文章专属图片使用相对路径 `![](filename.ext)`，存放于文章同名的资源文件夹中。
 - 不要修改 `public/` 或 `.deploy_git/` 中的文件——它们会在下次构建时被覆盖。
