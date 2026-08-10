@@ -8,17 +8,19 @@ echo.
 echo ==============================
 echo   Blog Tool - myblog
 echo ==============================
-echo   [1] 启动本地服务器
-echo   [2] Elog 拉取（语雀同步）
-echo   [3] 远程部署
+echo   [1] 启动本地服务器（增量）
+echo   [2] 本地构建并预览（清理缓存）
+echo   [3] Elog 拉取（语雀同步）
+echo   [4] 远程部署
 echo   [0] 退出
 echo ==============================
 set "choice=1"
 set /p choice=请选择:  [%choice%]
 
 if "%choice%"=="1" goto server
-if "%choice%"=="2" goto sync
-if "%choice%"=="3" goto deploy
+if "%choice%"=="2" goto build_preview
+if "%choice%"=="3" goto sync
+if "%choice%"=="4" goto deploy
 if "%choice%"=="0" exit /b 0
 echo 无效选项，请重新输入。
 goto menu
@@ -38,6 +40,18 @@ goto menu
 
 :server
 start "Hexo Server" /wait cmd /c "npx hexo server -o"
+goto menu
+
+:build_preview
+call npx hexo clean
+if errorlevel 1 goto build_preview_fail
+call npx hexo generate
+if errorlevel 1 goto build_preview_fail
+start "Hexo Server" /wait cmd /c "npx hexo server -o"
+goto menu
+
+:build_preview_fail
+echo 构建失败，请检查上方输出。
 goto menu
 
 :deploy
