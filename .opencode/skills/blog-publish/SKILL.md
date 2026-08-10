@@ -76,6 +76,8 @@ git log --oneline --since="<最新日志日期>"
   - 功能描述，可含链接。
 ```
 
+**修改 `hello-world.md` 时必须同步更新 front-matter 的 `updated` 字段为当前时间**，与日志日期保持一致。
+
 ### 4. 提交本地修改
 
 ```bash
@@ -84,6 +86,8 @@ git commit -m "<遵照 Conventional Commits 规范的中文提交信息>"
 ```
 
 提交信息需遵循 AGENTS.md 中的提交规范（Conventional Commits + 中文）。
+
+**日志提交策略：** 更新日志在每次远程部署前统一编写，无论修改多少次都归并为一个 commit（若 `hello-world.md` 的日志提交已是最近一次提交，可直接 `git commit --amend` 合并）。**不使用 rebase、autosquash 等历史改写操作拆分日志提交**，避免引入风险。
 
 ### 5. 输出发布摘要
 
