@@ -1,6 +1,6 @@
 # 老鼠洞里有什么
 
-这是一个由 [Hexo](https://hexo.io/) 驱动、使用 [Redefine](https://github.com/EvanNotFound/hexo-theme-redefine) 主题的个人博客项目。站点源文件在本仓库维护，静态产物通过 `hexo-deployer-git` 部署到 GitHub Pages 仓库的 `gh-pages` 分支。
+这是一个由 [Hexo](https://hexo.io/) 驱动、使用 [Redefine](https://github.com/EvanNotFound/hexo-theme-redefine) 主题的个人博客项目。站点源文件在本地仓库的 `master` 分支维护并推送到 GitHub 仓库的 `master` 分支同步备份，静态产物通过 `hexo-deployer-git` 部署到同一 GitHub 仓库的 `gh-pages` 分支。
 
 ## 项目结构
 
@@ -161,6 +161,18 @@ npx hexo deploy
 ```
 
 `hexo-deployer-git` 会在部署前自动生成静态文件，因此无需手动执行 `hexo generate`。部署使用 `.deploy_git/` 作为工作目录，并将生成后的静态站点推送到配置的远程仓库分支。`public/` 和 `.deploy_git/` 都是生成产物，不应作为源文件提交。
+
+### 源码远程同步
+
+远程仓库同时承担两个角色，通过不同分支区分：
+
+| 分支 | 内容 |
+| --- | --- |
+| `master` | 博客源码（本地 `master` 同步于此，`git push origin master`） |
+| `gh-pages` | 部署产物（由 `hexo-deployer-git` 自动推送，勿手动修改） |
+| `legacy` | 旧版站点静态文件备份，仅归档保留 |
+
+本地 `master` 已设置跟踪 `origin/master`，提交后执行 `git push origin master` 即可同步源码。`.elog.env`、`db.json` 等敏感文件已被 gitignore，不会被推送。
 
 注意：`_config.yml` 中的 `url` 仍是 Hexo 默认示例值时，应在正式部署前改为实际站点地址；当前主题配置 `_config.redefine.yml` 中的站点 URL 是 `https://isaacthemouse.github.io`。
 

@@ -125,8 +125,9 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 ## 注意事项
 
 - `.elog.env`、`db.json`、`public/`、`.deploy_git/`、`.deploy*/` 已被 gitignore，不要提交。
+- 远程仓库 `isaacthemouse.github.io` 的 `master` 分支是源码同步分支（本地 `master` 跟踪 `origin/master`，提交后执行 `git push origin master`）；`gh-pages` 是部署产物分支，勿手动修改；`legacy` 是旧站静态文件备份分支，仅归档。凭据（GitHub Token、语雀密码等）只应存在于 `.elog.env` 或环境变量中，绝对不能写入配置文件或提交到仓库。
 - `docs/` 下只有语雀同步的 `.md` 源文件（`docs/feishu/*.md`）被 git 跟踪，作为同步内容 diff 的基线；`docs/feishu/<标题>/` 图片文件夹及其他 docs 内容仍被 gitignore，不要提交。同步后可用 `git diff docs/feishu/` 确认语雀端更新了哪些内容。
 - `_config.yml` 中的 `url` 是占位值 `http://example.com`，真实站点 URL 在 `_config.redefine.yml` 中配置为 `https://isaacthemouse.github.io`。
 - 全局图片引用路径格式为 `/images/<filename>`，对应 `source/images/<filename>`。文章专属图片使用相对路径 `![](filename.ext)`，存放于文章同名的资源文件夹中。
 - 不要修改 `public/` 或 `.deploy_git/` 中的文件——它们会在下次构建时被覆盖。
-- 凭据（GitHub Token、语雀密码等）只应存在于 `.elog.env` 或环境变量中，绝对不能写入配置文件或提交到仓库。
+
