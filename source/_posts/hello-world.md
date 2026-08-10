@@ -10,7 +10,7 @@ excerpt: '使用 [Hexo](https://hexo.io/) 重构了个人博客，同时本文�
 ---
 使用 [Hexo](https://hexo.io/) 重构了个人博客，以前的文章有点太老了，看看有哪些能重写的，慢慢更新。
 
-### 功能更新日志
+## 功能更新日志
 - 2025/11/23
   - 重构了博客，使用主题 [Redefine v2.8.5](https://github.com/EvanNotFound/hexo-theme-redefine)。
   - 添加了[友情链接](/links/)。
@@ -23,3 +23,8 @@ excerpt: '使用 [Hexo](https://hexo.io/) 重构了个人博客，同时本文�
   - 添加了[自定义 `{% columns %}` 分栏标签](https://github.com/EvanNotFound/hexo-theme-redefine/issues/322)，支持图文左右分栏布局、移动端自动堆叠。
 - 2026/07/28
   - 新增[个人作品展示](/portfolio/)页面，以卡片与弹窗形式展示历年 GameJam 和个人项目。
+
+## TODOs
+- 首页背景存在切换明亮/黑暗模式时会缩放的问题，待[主题修复](https://github.com/evannotfound/hexo-theme-redefine/issues/619)后进行更新
+- 为图片插入提供更灵活的宽度控制，目前使用 `{% asset_img %}` 标签配合自定义 CSS 进行控制，由 Agent 工具在导入时统一进行格式化
+- 【低优先级】 为作品集添加筛选功能
