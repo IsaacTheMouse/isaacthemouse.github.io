@@ -23,6 +23,8 @@ excerpt: '使用 [Hexo](https://hexo.io/) 重构了个人博客，同时本文�
   - 添加了[自定义 `{% columns %}` 分栏标签](https://github.com/EvanNotFound/hexo-theme-redefine/issues/322)，支持图文左右分栏布局、移动端自动堆叠。
 - 2026/07/28
   - 新增[个人作品展示](/portfolio/)页面，以卡片与弹窗形式展示历年 GameJam 和个人项目。
+- 2026/08/10
+  - 正文图片支持 50%/70%/90% 响应式宽度档位，移动端自动显示为 100% 宽度。
 
 ## TODOs
 - 首页背景存在切换明亮/黑暗模式时会缩放的问题，待[主题修复](https://github.com/evannotfound/hexo-theme-redefine/issues/619)后进行更新
