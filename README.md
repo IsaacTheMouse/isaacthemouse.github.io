@@ -106,13 +106,15 @@ npx hexo new post "文章标题"
 
 作品集页位于 `/portfolio/`，由以下文件共同维护：
 
-- `source/portfolio/index.md` 是页面入口，使用 `{% portfolio %}` 标签生成内容。
+- `source/portfolio/index.md` 是页面入口，通过 `template: portfolio` 在页面模板渲染阶段生成内容。
 - `source/_data/portfolio.yml` 保存项目元数据、Markdown 正文和相关链接。
 - `source/portfolio/assets/` 保存作品集专属图片，数据中使用 `/portfolio/assets/<filename>` 引用。
-- `scripts/portfolio.js` 生成卡片、详情弹窗、筛选数据属性和 Redefine `{% button %}` 链接。
+- `scripts/portfolio.js` 在每次页面模板渲染时读取最新数据，生成卡片、详情弹窗、筛选数据属性和 Redefine `{% button %}` 链接。
 - `source/css/portfolio.css` 与 `source/js/portfolio.js` 分别维护页面样式和弹窗交互。
 
 每个项目至少填写 `id`、`title`、`year`、`sort_date`、`period`、`status`、`engines`、`roles`、`types`、`summary`、`cover`、`game_content` 和 `work_content`。`engines`、`roles`、`types` 必须使用数组；这些字段会生成 `data-year`、`data-engine`、`data-role`、`data-type`，供未来的筛选控件使用。正文使用 YAML `|` 块保存 Markdown，缩进保持为 4 个空格。可选的 `links` 数组会使用主题的 `{% button %}` 标签渲染，外部链接设置 `external: true`。
+
+项目在页面中的显示顺序与 `source/_data/portfolio.yml` 中的排列顺序一致。Portfolio 数据在模板阶段读取，修改 YAML 后使用普通的 `npx hexo server` 或 `npx hexo generate` 即可重新生成页面，无需依赖 Markdown 标签缓存。
 
 内容更新也建议使用规范化提交信息。遵循 [Conventional Commits](https://www.conventionalcommits.org/) 格式：
 

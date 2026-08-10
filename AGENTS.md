@@ -39,7 +39,7 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 | `source/portfolio/` | `/portfolio/` 独立页面入口及作品集专属图片 | README「内容维护」 |
 | `scripts/columns.js` | 站点级自定义标签 `{% columns %}`，分栏布局（参数 `ratio`/`cols`/`gap`/`fill`，`<!-- column -->` 分隔，各栏顶对齐，移动端自动堆叠） | README「写作指导」 |
 | `scripts/article-images.js`、`source/css/article-images.css` | 正文图片的响应式宽度档位（50%/70%/90%，移动端 100%） | README「写作指导」 |
-| `scripts/portfolio.js` | 站点级自定义标签 `{% portfolio %}`，生成作品卡片、详情弹窗和主题按钮 | README「内容维护」 |
+| `scripts/portfolio.js` | 通过 `template_locals` 在页面模板阶段生成作品卡片、详情弹窗和主题按钮 | README「内容维护」 |
 | `source/css/portfolio.css`、`source/js/portfolio.js` | 作品集页面样式与兼容 Swup 的弹窗交互 | README「内容维护」 |
 | `scaffolds/` | `hexo new` 命令使用的文章模板（draft/page/post） | Hexo 文档 |
 | `.elog.env` | Elog 凭据文件，已被 gitignore，禁止提交 | README「安全注意」 |
@@ -111,6 +111,7 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 
 - 作品集不是文章，页面入口固定为 `source/portfolio/index.md`，不要移动到 `source/_posts/`。
 - 项目内容只在 `source/_data/portfolio.yml` 中维护；`game_content` 和 `work_content` 使用 YAML `|` 块保存 Markdown。
+- 项目显示顺序与 `source/_data/portfolio.yml` 中的排列顺序一致；页面使用 `template: portfolio` 在模板阶段读取最新数据，不依赖 Markdown 标签缓存。
 - `engines`、`roles`、`types` 使用受控数组值，不要合并为自然语言字符串，以便未来直接添加筛选控件。
 - `year` 用于年份筛选，`sort_date` 使用 `YYYY-MM-DD` 格式并用于排序扩展，`period` 仅用于展示。
 - 作品集图片放入 `source/portfolio/assets/`，引用格式为 `/portfolio/assets/<filename>`。
@@ -129,4 +130,3 @@ AI 编码助手在本项目的开发与维护指南。关于项目背景、结�
 - 全局图片引用路径格式为 `/images/<filename>`，对应 `source/images/<filename>`。文章专属图片使用相对路径 `![](filename.ext)`，存放于文章同名的资源文件夹中。
 - 不要修改 `public/` 或 `.deploy_git/` 中的文件——它们会在下次构建时被覆盖。
 - 凭据（GitHub Token、语雀密码等）只应存在于 `.elog.env` 或环境变量中，绝对不能写入配置文件或提交到仓库。
-

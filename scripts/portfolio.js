@@ -177,22 +177,31 @@ async function renderProject(project, index, postContext) {
     </article>`;
 }
 
-async function renderPortfolio() {
-  const data = hexo.locals.get('data');
-  const projects = Array.isArray(data?.portfolio) ? data.portfolio : [];
-
+async function renderPortfolio(projects, pageContext) {
   if (!projects.length) {
     return '<p class="portfolio-empty">暂时还没有作品。</p>';
   }
 
   const items = await Promise.all(
-    projects.map((project, index) => renderProject(project, index, this))
+    projects.map((project, index) => renderProject(project, index, pageContext))
   );
 
   return `<section class="portfolio-shell" data-portfolio><div class="portfolio-grid" role="list">${items.join('')}</div></section>`;
 }
 
-hexo.extend.tag.register('portfolio', renderPortfolio, { async: true });
+hexo.extend.filter.register('template_locals', async function (locals) {
+  if (locals.page?.template !== 'portfolio') {
+    return locals;
+  }
+
+  const projects = Array.isArray(locals.site?.data?.portfolio)
+    ? locals.site.data.portfolio
+    : [];
+  const portfolio = await renderPortfolio(projects, locals.page);
+
+  locals.page.content = `${locals.page.content || ''}\n${portfolio}`;
+  return locals;
+});
 
 hexo.extend.injector.register('head_end', '<link rel="stylesheet" href="/css/portfolio.css">');
 hexo.extend.injector.register('body_end', '<script src="/js/portfolio.js" defer></script>');
